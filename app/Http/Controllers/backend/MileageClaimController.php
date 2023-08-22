@@ -32,14 +32,21 @@ class MileageClaimController extends Controller {
         $mileage_claim = new MileageClaim();
         $mileage_claim->fill($request->all());
         $mileage_claim->total_claim = $mileage_claim->fuel_cost;
-        Auth::user()->staff->mileageClaims()->save($mileage_claim);
-        return redirect()->route('mileage-claim.index');
+
+        if (Auth::user()->staff->mileageClaims()->save($mileage_claim)) {
+            return redirect()->route('mileage-claim.index')->with('success', 'Mileage claim created successfully.');
+        } else {
+            return redirect()->route('mileage-claim.create')->with('error', 'Mileage claim failed to create.');
+        }
     }
 
     //delete function
     public function destroy($id) {
         $mileage_claim = MileageClaim::find($id);
-        $mileage_claim->delete();
-        return redirect()->route('mileage-claim.index');
+        if ($mileage_claim->delete()) {
+            return redirect()->route('mileage-claim.index')->with('success', 'Mileage claim deleted successfully.');
+        } else {
+            return redirect()->route('mileage-claim.index')->with('error', 'Mileage claim failed to delete.');
+        }
     }
 }

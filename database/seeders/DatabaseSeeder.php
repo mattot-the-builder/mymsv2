@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\ExpenseClaim;
+use App\Models\ExpenseItem;
 use App\Models\LeaveRequest;
 use App\Models\MileageClaim;
 use App\Models\User;
@@ -18,6 +20,8 @@ class DatabaseSeeder extends Seeder {
 
         User::factory()->create();
         Staff::factory()->create();
+        ExpenseClaim::factory()->create();
+        ExpenseItem::factory()->create();
         MileageClaim::factory()->create();
         LeaveRequest::factory()->create();
 

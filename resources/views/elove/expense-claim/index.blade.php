@@ -7,6 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-alert />
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -16,7 +17,7 @@
                                     Id
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Name
+                                    Staff
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Total Claim
@@ -30,27 +31,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($mileage_claims as $mileage_claim)
+
+                            @foreach ($expense_claims as $expense_claim)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mileage_claim->id }}
+                                    {{ $expense_claim->id }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $mileage_claim->trip_name }}
+                                    {{ App\Models\Staff::find($expense_claim->staff_id)->user->name }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    RM {{ $mileage_claim->total_claim }}
+                                    RM {{ $expense_claim->total_claim }}
                                 </td>
                                 <td class="px-6 py-4 ">
-                                    {{ $mileage_claim->status }}
+                                    <x-status-badge :status="$expense_claim->status" />
                                 </td>
+
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('mileage-claim.destroy', $mileage_claim->id) }} }}"
+                                    <a href="{{ route('expense-claim.destroy', $expense_claim->id) }} }}"
                                         class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                                 </td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
 
                         </tbody>
                     </table>

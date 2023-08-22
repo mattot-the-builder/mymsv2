@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->string('trip_name');
             $table->string('starting_location');
             $table->string('destination');
-            $table->float('mileage');
-            $table->float('fuel_cost');
-            $table->float('total_claim');
+            $table->float('mileage', 8, 2);
+            $table->float('fuel_cost', 8, 2);
+            $table->float('total_claim', 8, 2);
             $table->string('attachment')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();

@@ -7,6 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            <x-alert />
+
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -14,6 +17,9 @@
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     Id
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Staff
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Name
@@ -36,6 +42,11 @@
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $mileage_claim->id }}
                                 </th>
+
+                                <td class="px-6 py-4">
+                                    {{ App\Models\Staff::find($mileage_claim->staff_id)->user->name }}
+                                </td>
+
                                 <td class="px-6 py-4">
                                     {{ $mileage_claim->trip_name }}
                                 </td>

@@ -22,14 +22,17 @@ class LeaveRequestController extends Controller {
         return view('elove/leave-request/create');
     }
 
-    //store function
+    // store function
     public function store(Request $request) {
         $leave_request = new LeaveRequest();
         $leave_request->fill($request->all());
+        $leave_request->total_leave = 0;
 
-        Auth::user()->staff->leaveRequests()->save($leave_request);
-
-        return redirect()->route('leave-request.index')->with('success', 'Leave request created successfully.');
+        if (Auth::user()->staff->leaveRequests()->save($leave_request)) {
+            return redirect()->route('leave-request.index')->with('success', 'Leave request created successfully.');
+        } else {
+            return redirect()->route('leave-request.create')->with('error', 'Leave request failed to create.');
+        }
     }
 
     // show function
@@ -41,7 +44,10 @@ class LeaveRequestController extends Controller {
     // destroy function
     public function destroy($id) {
         $leave_request = LeaveRequest::find($id);
-        $leave_request->delete();
-        return redirect()->route('leave-request.index')->with('success', 'Leave request deleted successfully.');
+        if ($leave_request->delete()) {
+            return redirect()->route('leave-request.index')->with('success', 'Leave request deleted successfully.');
+        } else {
+            return redirect()->route('leave-request.index')->with('error', 'Leave request failed to delete.');
+        }
     }
 }

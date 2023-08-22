@@ -11,4 +11,8 @@ class ExpenseClaim extends Model {
     public function staff() {
         return $this->belongsTo(Staff::class);
     }
+
+    public function items() {
+        return $this->hasMany(ExpenseItem::class);
+    }
 }

@@ -9,13 +9,13 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('overtime_claims', function (Blueprint $table) {
+        Schema::create('expense_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id')->constrained()->cascadeOnDelete();
-            $table->float('total_hours', 8, 2);
-            $table->float('ot_code');
-            $table->float('total_claim', 8, 2);
-            $table->string('status')->default('pending');
+            $table->foreignId('expense_claim_id')->constrained()->cascadeOnDelete();
+            $table->date('date');
+            $table->text('details');
+            $table->float('amount', 8, 2);
+            $table->string('receipt')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('overtime_claims');
+        Schema::dropIfExists('expense_items');
     }
 };

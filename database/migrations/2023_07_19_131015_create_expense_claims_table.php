@@ -12,10 +12,8 @@ return new class extends Migration {
         Schema::create('expense_claims', function (Blueprint $table) {
             $table->id();
             $table->foreignId('staff_id')->constrained()->cascadeOnDelete();
-            $table->json('details');
-            $table->float('total_claim');
+            $table->float('total_claim', 8, 2);
             $table->string('status')->default('pending');
-            $table->string('attachment')->nullable();
             $table->timestamps();
         });
     }

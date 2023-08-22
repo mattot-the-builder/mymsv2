@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('leave_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id')->constrained();
+            $table->foreignId('staff_id')->constrained()->cascadeOnDelete();
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('total_leave');

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('overtime_claims', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id')->constrained();
+            $table->foreignId('staff_id')->constrained()->cascadeOnDelete();
             $table->json('details');
             $table->integer('total_hours');
             $table->float('ot_code');

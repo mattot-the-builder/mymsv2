@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('mileage_claims', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id')->constrained();
+            $table->foreignId('staff_id')->constrained()->cascadeOnDelete();
             $table->date('trip_date');
             $table->string('trip_name');
             $table->string('starting_location');

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('expense_claims', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('staff_id')->constrained();
+            $table->foreignId('staff_id')->constrained()->cascadeOnDelete();
             $table->json('details');
             $table->float('total_claim');
             $table->string('status')->default('pending');

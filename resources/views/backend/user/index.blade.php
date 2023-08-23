@@ -1,16 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Mileage Claim') }}
+            {{ __('User') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             <x-alert />
-            <x-new-claim-button routeName="mileage-claim.create" />
-
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -20,16 +17,13 @@
                                     Id
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Staff
-                                </th>
-                                <th scope="col" class="px-6 py-3">
                                     Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Total Claim
+                                    Email
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Status
+                                    Created At
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Action
@@ -37,28 +31,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($mileage_claims as $mileage_claim)
+
+                            @foreach ($users as $user)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $mileage_claim->id }}
+                                    {{ $user->id }}
                                 </th>
-
                                 <td class="px-6 py-4">
-                                    {{ App\Models\Staff::find($mileage_claim->staff_id)->user->name }}
-                                </td>
-
-                                <td class="px-6 py-4">
-                                    {{ $mileage_claim->trip_name }}
+                                    {{ $user->name }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    RM {{ $mileage_claim->total_claim }}
+                                    {{ $user->email }}
                                 </td>
-                                <td class="px-6 py-4 ">
-                                    <x-status-badge status="{{ $mileage_claim->status }}" />
+                                <td class="px-6 py-4">
+                                    {{ $user->created_at->diffForHumans() }}
                                 </td>
-
-                                <x-action-delete routeName="mileage-claim.destroy" id="{{ $mileage_claim->id }}" />
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('user.destroy', $user->id) }} }}"
+                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                                </td>
                             </tr>
                             @endforeach
 

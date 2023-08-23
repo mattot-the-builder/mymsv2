@@ -9,6 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <x-alert />
+            <x-new-claim-button routeName="leave-request.create" />
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
@@ -74,10 +75,8 @@
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <x-status-badge status="{{ $leave_request->status }}" />
                                 </th>
-                                <td class="px-6 py-4">
-                                    <a href="{{ route('leave-request.destroy', $leave_request->id) }} }}"
-                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
-                                </td>
+
+                                <x-action-delete routeName="leave-request.destroy" id="{{ $leave_request->id }}" />
                             </tr>
                             @endforeach
 

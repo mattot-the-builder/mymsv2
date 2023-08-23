@@ -16,6 +16,7 @@ class ExpenseItemFactory extends Factory {
     public function definition(): array {
         return [
             'expense_claim_id' => 1,
+            'index' => 1,
             'date' => $this->faker->date(),
             'details' => 'Expense item details',
             'amount' => $this->faker->randomFloat(2, 0, 999999.99),

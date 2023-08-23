@@ -9,7 +9,7 @@ class ExpenseItem extends Model {
     use HasFactory;
 
     protected $fillable = [
-        'expense_claim',
+        'expense_claim_id',
         'date',
         'details',
         'amount',

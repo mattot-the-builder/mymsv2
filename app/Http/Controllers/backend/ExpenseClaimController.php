@@ -24,15 +24,16 @@ class ExpenseClaimController extends Controller {
 
     //store function
     public function store(Request $request) {
-        $expense_claim = new ExpenseClaim();
-        $expense_claim->fill($request->all());
-        $expense_claim->total_claim = 00.00;
+        dd('store fired');
+        // $expense_claim = new ExpenseClaim();
+        // $expense_claim->fill($request->all());
+        // $expense_claim->total_claim = 00.00;
 
-        if (Auth::user()->staff->expenseClaims()->save($expense_claim)) {
-            return redirect()->route('expense-claim.index')->with('success', 'Expense claim created successfully.');
-        } else {
-            return redirect()->route('expense-claim.create')->with('error', 'Expense claim failed to create.');
-        }
+        // if (Auth::user()->staff->expenseClaims()->save($expense_claim)) {
+        //     return redirect()->route('expense-claim.index')->with('success', 'Expense claim created successfully.');
+        // } else {
+        //     return redirect()->route('expense-claim.create')->with('error', 'Expense claim failed to create.');
+        // }
     }
 
     //show function

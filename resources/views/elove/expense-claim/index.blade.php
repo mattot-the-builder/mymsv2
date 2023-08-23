@@ -7,7 +7,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
             <x-alert />
+            <x-new-claim-button routeName="expense-claim.create" />
+
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -48,10 +51,7 @@
                                     <x-status-badge :status="$expense_claim->status" />
                                 </td>
 
-                                <td class="px-6 py-4">
-                                    <a href="{{ route('expense-claim.destroy', $expense_claim->id) }} }}"
-                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
-                                </td>
+                                <x-action-delete routeName="expense-claim.destroy" id="{{ $expense_claim->id }}" />
                             </tr>
                             @endforeach
 

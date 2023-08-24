@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller {
 
@@ -22,6 +24,11 @@ class UserController extends Controller {
 
         $users = User::latest()->paginate(10);
         return view('backend.user.index', compact('users'));
+    }
+
+    // export function
+    public function exportAsExcel() {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 
     //destroy function

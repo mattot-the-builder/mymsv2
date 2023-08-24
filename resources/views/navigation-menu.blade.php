@@ -190,9 +190,43 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+        <div class="py-1 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="py-1 space-y-1">
+            <x-responsive-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
+                {{ __('User') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="py-1 space-y-1">
+            <x-responsive-nav-link href="{{ route('staff.index') }}" :active="request()->routeIs('staff.index')">
+                {{ __('Staff') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="py-1 space-y-1">
+            <x-responsive-nav-link href="{{ route('expense-claim.index') }}"
+                :active="request()->routeIs('expense-claim.index')">
+                {{ __('Expense Claim') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="py-1 space-y-1">
+            <x-responsive-nav-link href="{{ route('mileage-claim.index') }}"
+                :active="request()->routeIs('mileage-claim.index')">
+                {{ __('Mileage Claim') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="py-1 space-y-1">
+            <x-responsive-nav-link href="{{ route('overtime-claim.index') }}"
+                :active="request()->routeIs('overtime-claim.index')">
+                {{ __('Overtime Claim') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="py-1 space-y-1">
+            <x-responsive-nav-link href="{{ route('leave-request.index') }}"
+                :active="request()->routeIs('leave-request.index')">
+                {{ __('Leave Request') }}
             </x-responsive-nav-link>
         </div>
 

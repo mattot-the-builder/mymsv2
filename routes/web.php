@@ -24,6 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/home', 'home')->name('home');
+
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
 
@@ -35,11 +37,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // user
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::post('/user/{keyword?}', [UserController::class, 'index'])->name('user.search');
+    Route::get('/user/export', [UserController::class, 'exportAsExcel'])->name('user.export.excel');
     Route::get('/user/delete/{id?}', [UserController::class, 'destroy'])->name('user.destroy');
 
     // staff
     Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
     Route::post('/staff/{keyword?}', [StaffController::class, 'index'])->name('staff.search');
+    Route::get('/staff/export', [StaffController::class, 'exportAsExcel'])->name('staff.export.excel');
     Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
     Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
     Route::get('/staff/{id?}', [StaffController::class, 'show'])->name('staff.show');
@@ -50,6 +54,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // expense claim
     Route::get('/expense-claim', [ExpenseClaimController::class, 'index'])->name('expense-claim.index');
     Route::post('expense-claim/{keyword?}', [ExpenseClaimController::class, 'index'])->name('expense-claim.search');
+    Route::get('/expense-claim/export', [ExpenseClaimController::class, 'exportAsExcel'])->name('expense-claim.export.excel');
     Route::get('/expense-claim/create', [ExpenseClaimController::class, 'create'])->name('expense-claim.create');
     Route::get('/expense-claim/{id?}', [ExpenseClaimController::class, 'show'])->name('expense-claim.show');
     Route::get('/expense-claim/accept/{id?}', [ExpenseClaimController::class, 'accept'])->name('expense-claim.accept');
@@ -59,6 +64,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // mileage claim
     Route::get('/mileage-claim', [MileageClaimController::class, 'index'])->name('mileage-claim.index');
     Route::post('/mileage-claim/{keyword?}', [MileageClaimController::class, 'index'])->name('mileage-claim.search');
+    Route::get('/mileage-claim/export', [MileageClaimController::class, 'exportAsExcel'])->name('mileage-claim.export.excel');
     Route::get('/mileage-claim/create', [MileageClaimController::class, 'create'])->name('mileage-claim.create');
     Route::post('/mileage-claim', [MileageClaimController::class, 'store'])->name('mileage-claim.store');
     Route::get('/mileage-claim/{id?}', [MileageClaimController::class, 'show'])->name('mileage-claim.show');
@@ -69,6 +75,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // overtime claim
     Route::get('/overtime-claim', [OvertimeClaimController::class, 'index'])->name('overtime-claim.index');
     Route::post('/overtime-claim/{keyword?}', [OvertimeClaimController::class, 'index'])->name('overtime-claim.search');
+    Route::get('/overtime-claim/export', [OvertimeClaimController::class, 'exportAsExcel'])->name('overtime-claim.export.excel');
     Route::get('/overtime-claim/create', [OvertimeClaimController::class, 'create'])->name('overtime-claim.create');
     Route::get('/overtime-claim/{id?}', [OvertimeClaimController::class, 'show'])->name('overtime-claim.show');
     Route::get('/overtime-claim/accept/{id?}', [OvertimeClaimController::class, 'accept'])->name('overtime-claim.accept');
@@ -78,6 +85,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // leave request
     Route::get('/leave-request', [LeaveRequestController::class, 'index'])->name('leave-request.index');
     Route::post('/leave-request/{keyword?}', [LeaveRequestController::class, 'index'])->name('leave-request.search');
+    Route::get('/leave-request/export', [LeaveRequestController::class, 'exportAsExcel'])->name('leave-request.export.excel');
     Route::get('/leave-request/create', [LeaveRequestController::class, 'create'])->name('leave-request.create');
     Route::post('/leave-request/store', [LeaveRequestController::class, 'store'])->name('leave-request.store');
     Route::get('/leave-request/{id?}', [LeaveRequestController::class, 'show'])->name('leave-request.show');

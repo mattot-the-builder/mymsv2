@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Models\LeaveRequest;
+use App\Exports\LeaveRequestExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LeaveRequestController extends Controller {
 
@@ -21,6 +23,11 @@ class LeaveRequestController extends Controller {
         }
         $leave_requests = LeaveRequest::latest('updated_at')->paginate(10);
         return view('elove/leave-request/index', compact('leave_requests'));
+    }
+
+    // export function
+    public function exportAsExcel() {
+        return Excel::download(new LeaveRequestExport, 'leave_request.xlsx');
     }
 
     // create function

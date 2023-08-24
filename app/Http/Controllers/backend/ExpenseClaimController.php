@@ -9,6 +9,9 @@ use App\Models\ExpenseClaim;
 use App\Models\ExpenseItem;
 use Illuminate\Http\Request;
 
+use App\Exports\ExpenseClaimExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ExpenseClaimController extends Controller {
 
     // index function
@@ -21,6 +24,11 @@ class ExpenseClaimController extends Controller {
         }
         $expense_claims = ExpenseClaim::latest('updated_at')->paginate(10);
         return view('elove/expense-claim/index', compact('expense_claims'));
+    }
+
+    // export function
+    public function exportAsExcel() {
+        return Excel::download(new ExpenseClaimExport, 'expense_claim.xlsx');
     }
 
     // create function

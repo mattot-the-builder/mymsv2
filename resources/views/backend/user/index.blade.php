@@ -8,7 +8,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-alert />
-            <x-search route="user.search" placeholder="user" />
+
+            <div class="flex justify-between">
+                <x-search route="user.search" placeholder="user" />
+                <x-export-excel route="user.export.excel" />
+
+            </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

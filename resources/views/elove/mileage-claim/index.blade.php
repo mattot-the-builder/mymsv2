@@ -10,7 +10,12 @@
 
             <x-alert />
             <x-new-claim-button routeName="mileage-claim.create" />
-            <x-search route="mileage-claim.search" placeholder="mileage claim" />
+
+
+            <div class="flex justify-between">
+                <x-search route="mileage-claim.search" placeholder="mileage claim" />
+                <x-export-excel route="mileage-claim.export.excel" />
+            </div>
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">

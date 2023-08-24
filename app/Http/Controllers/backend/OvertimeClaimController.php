@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\OvertimeClaim;
 use App\Models\OvertimeItem;
 
+use App\Exports\OvertimeClaimExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class OvertimeClaimController extends Controller {
     // index function
     public function index(Request $request) {
@@ -18,6 +21,11 @@ class OvertimeClaimController extends Controller {
         }
         $overtime_claims = OvertimeClaim::latest('updated_at')->paginate(10);
         return view('elove/overtime-claim/index', compact('overtime_claims'));
+    }
+
+    // export function
+    public function exportAsExcel() {
+        return Excel::download(new OvertimeClaimExport, 'overtime_claim.xlsx');
     }
 
     // create function

@@ -10,7 +10,11 @@
 
             <x-alert />
             <x-new-claim-button routeName="leave-request.create" />
-            <x-search route="leave-request.search" placeholder="leave request" />
+
+            <div class="flex justify-between">
+                <x-search route="leave-request.search" placeholder="leave request" />
+                <x-export-excel route="leave-request.export.excel" />
+            </div>
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">

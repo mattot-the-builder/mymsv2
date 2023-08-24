@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Staff;
+use App\Exports\StaffExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StaffController extends Controller {
 
@@ -22,6 +24,11 @@ class StaffController extends Controller {
 
         $staffs = Staff::latest()->paginate(10);
         return view('elove.staff.index', compact('staffs'));
+    }
+
+    // export function
+    public function exportAsExcel() {
+        return Excel::download(new StaffExport, 'staff.xlsx');
     }
 
     // create function

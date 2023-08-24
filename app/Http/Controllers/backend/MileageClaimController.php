@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use App\Models\MileageClaim;
 use Illuminate\Support\Facades\Auth;
 
+use App\Exports\MileageClaimExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 class MileageClaimController extends Controller {
 
     //index function
@@ -19,6 +23,11 @@ class MileageClaimController extends Controller {
         }
         $mileage_claims = MileageClaim::latest('updated_at')->paginate(10);
         return view('elove/mileage-claim/index', compact('mileage_claims'));
+    }
+
+    //export function
+    public function exportAsExcel() {
+        return Excel::download(new MileageClaimExport, 'mileage_claim.xlsx');
     }
 
     //show function

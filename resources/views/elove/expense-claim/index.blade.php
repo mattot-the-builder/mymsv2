@@ -10,7 +10,13 @@
 
             <x-alert />
             <x-new-claim-button routeName="expense-claim.create" />
-            <x-search route="expense-claim.search" placeholder="expense claim" />
+
+            <div class="flex justify-between">
+                <x-search route="expense-claim.search" placeholder="expense claim" />
+                <x-export-excel route="expense-claim.export.excel" />
+
+            </div>
+
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">

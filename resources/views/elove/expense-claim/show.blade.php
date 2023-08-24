@@ -31,6 +31,7 @@
                         <x-show-item label="Total Claim" :value="$expense_claim->total_claim" />
                         <x-show-item label="Claim Status" :value="$expense_claim->status" />
                         <x-show-item label="Created at" :value="$expense_claim->created_at->diffForHumans()" />
+                        <x-show-item label="Last Updated" :value="$expense_claim->updated_at->diffForHumans()" />
                     </tbody>
                 </table>
 
@@ -61,37 +62,32 @@
                                 Receipt
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Total Claim
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
+                                Amount
                             </th>
                         </tr>
                     </thead>
                     <tbody>
 
                         @foreach (App\Models\ExpenseClaim::find($expense_claim->id)->items as $expense_item)
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $expense_item->id }}
-                        </th>
-                        <td class="px-6 py-4">
-                            {{ $expense_item->details }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $expense_item->date }}
-                        </td>
-                        <td class="px-6 py-4">
-                            N/A
-                        </td>
-                        <td class="px-6 py-4">
-                            RM {{ $expense_item->total_claim }}
-                        </td>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $expense_item->id }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $expense_item->details }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $expense_item->date }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <img class="h-20 max-w-full" src="{{ $expense_item->receipt }}" alt="img" />
+                            </td>
+                            <td class="px-6 py-4">
+                                RM {{ $expense_item->amount }}
+                            </td>
 
-                        <td class="px-6 py-4">
-                            <a href="{{ route('expense-claim.destroy', $expense_claim->id) }} }}"
-                                class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
-                        </td>
-
+                        </tr>
 
                         @endforeach
                         {{-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">

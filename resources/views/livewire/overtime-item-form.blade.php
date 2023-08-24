@@ -8,7 +8,7 @@
                 </h2>
 
                 <h3 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight pb-6 px-6">
-                    Add Expense Item
+                    Add Overtime Item
                 </h3>
 
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -48,46 +48,29 @@
                             </td>
                         </tr>
 
-
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Amount
+                                Start Time
                             </th>
                             <td class="px-6 py-4">
-                                <input type="number" name="amount"
+                                <input type="time" name="start_time"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Amount" wire:model="amount" required>
+                                    wire:model="start_time" required>
+
                             </td>
                         </tr>
 
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Receipt
+                                End Time
                             </th>
                             <td class="px-6 py-4">
-                                @if ($receipt)
-                                <img class="h-20 max-w-full mb-6" src="{{ $receipt->temporaryUrl() }}" alt="img" />
-                                @endif
-                                <label for="dropzone-file"
-                                    class="flex flex-col items-center justify-center w-full h-25 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                        </svg>
-                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
-                                                class="font-semibold">Click to
-                                                upload</span> or drag and drop</p>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF
-                                            (MAX. 800x400px)</p>
-                                    </div>
-                                    <input id="dropzone-file" type="file" class="hidden" name="receipt"
-                                        wire:model="receipt" />
-                                </label>
+                                <input type="time" name="end_time"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    wire:model="end_time" required>
+
                             </td>
                         </tr>
 
@@ -121,7 +104,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
 
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight p-6">
-                    Current Expense Item
+                    Current Overtime Item
                 </h2>
 
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -137,10 +120,13 @@
                                 Details
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Amount
+                                Start Time
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Receipt
+                                End Time
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Total Hours
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -149,36 +135,39 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($expense_items as $expense_item)
+                        @foreach ($overtime_items as $item)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->index + 1 }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $expense_item['date'] }}
+                                {{ $item['date'] }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $expense_item['details'] }}
+                                {{ $item['details'] }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $expense_item['amount'] }}
+                                {{ $item['start_time'] }}
                             </td>
                             <td class="px-6 py-4">
-                                <img class="h-20 max-w-full" src="{{ $expense_item['receipt'] }}" alt="img" />
+                                {{ $item['end_time'] }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $item['total_hour'] }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#" type="button"
                                     class="font-medium text-red-600 dark:text-red-500 hover:underline"
-                                    wire:click="destroy({{ $expense_item['index'] }})">Remove</a>
+                                    wire:click="destroy({{ $item['index'] }})">Remove</a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
                         <tr class="font-semibold text-gray-900 dark:text-white">
-                            <th scope="row" class="px-6 py-3 text-base">Total</th>
-                            <td class="px-6 py-3">RM {{ $total_claim }}</td>
+                            <th scope="row" class="px-6 py-3 text-base">Total hours</th>
+                            <td class="px-6 py-3">{{ $total_hours }}</td>
                         </tr>
                     </tfoot>
                 </table>

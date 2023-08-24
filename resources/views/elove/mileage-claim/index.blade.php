@@ -10,6 +10,7 @@
 
             <x-alert />
             <x-new-claim-button routeName="mileage-claim.create" />
+            <x-search route="mileage-claim.search" placeholder="mileage claim" />
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
@@ -58,12 +59,24 @@
                                     <x-status-badge status="{{ $mileage_claim->status }}" />
                                 </td>
 
-                                <x-action-delete routeName="mileage-claim.destroy" id="{{ $mileage_claim->id }}" />
+                                <td class="px-6 py-4 ">
+                                    <x-action-accept routeName="mileage-claim.accept" id="{{ $mileage_claim->id }}" />
+                                    <x-action-reject routeName="mileage-claim.reject" id="{{ $mileage_claim->id }}" />
+                                    <x-action-view routeName="mileage-claim.show" id="{{ $mileage_claim->id }}" />
+                                    <x-action-delete routeName="mileage-claim.destroy" id="{{ $mileage_claim->id }}" />
+                                </td>
+
+
+
+
                             </tr>
                             @endforeach
 
                         </tbody>
                     </table>
+                    <div class="pagination m-4">
+                        {{ $mileage_claims->links() }}
+                    </div>
                 </div>
             </div>
         </div>

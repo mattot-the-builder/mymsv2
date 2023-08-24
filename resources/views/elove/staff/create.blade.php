@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-alert />
@@ -12,7 +13,7 @@
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight p-6">
                     Create New Staff
                 </h2>
-                <form method="POST" action="{{ route('staff.store') }}">
+                <form method="POST" action="{{ route('staff.store') }}" enctype="multipart/form-data">
                     @csrf
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -27,14 +28,12 @@
                         </thead>
                         <tbody>
 
-                            // staff status
-
+                            <x-form-radio label="Staff Status" name="staff_status"
+                                :options="['Permanent Staff', 'Contract Staff', 'Internship']" />
                             <x-form-date label="Start Date Working" name="start_date_working" />
                             <x-form-text label="IC Number" name="ic_number" />
                             <x-form-number label="Age" name="age" />
-
-                            //gender
-
+                            <x-form-radio label="Gender" name="gender" :options="['Male', 'Female']" />
                             <x-form-text label="Contact" name="contact" />
 
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -64,10 +63,8 @@
                             <x-form-text label="Vehicle Registration" name="vehicle_registration" />
                             <x-form-text label="Vehicle Type" name="vehicle_type" />
                             <x-form-text label="Vehicle Model" name="vehicle_model" />
-
-                            // front_ic
-
-                            // back_ic
+                            <x-form-image label="Front IC" name="front_ic" />
+                            <x-form-image label="Back IC" name="back_ic" />
 
                         </tbody>
 

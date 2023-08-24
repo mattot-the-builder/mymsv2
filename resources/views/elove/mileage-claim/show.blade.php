@@ -33,7 +33,7 @@
                         <x-show-item label="Destination" :value="$mileage_claim->destination" />
                         <x-show-item label="Mileage" :value="$mileage_claim->mileage" />
                         <x-show-item label="Fuel Cost" :value="$mileage_claim->total_claim" />
-                        <x-show-item label="Attachment" value="N/A" />
+                        <x-show-image label="Attachment" :value="$mileage_claim->attachment" />
                         <x-show-item label="Claim Status" :value="$mileage_claim->status" />
                         <x-show-item label="Created at" :value="$mileage_claim->created_at->diffForHumans()" />
 

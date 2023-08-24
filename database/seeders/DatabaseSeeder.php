@@ -8,6 +8,8 @@ use App\Models\ExpenseClaim;
 use App\Models\ExpenseItem;
 use App\Models\LeaveRequest;
 use App\Models\MileageClaim;
+use App\Models\OvertimeClaim;
+use App\Models\OvertimeItem;
 use App\Models\User;
 use App\Models\Staff;
 use Illuminate\Database\Seeder;
@@ -18,14 +20,26 @@ class DatabaseSeeder extends Seeder {
      */
     public function run(): void {
 
-        User::factory()->create();
-        Staff::factory()->create();
-        ExpenseClaim::factory()->create();
-        ExpenseItem::factory()->create();
-        MileageClaim::factory()->create();
-        LeaveRequest::factory()->create();
+        User::factory()->create([
+            'name' => 'mattot',
+            'email' => 'mattot@test.com',
+            'password' => bcrypt('password'),
+        ]);
 
-        // Staff::factory()->create();
+        User::factory()->create([
+            'name' => 'Administrator',
+            'email' => 'admin@test.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::factory()->create([
+            'name' => 'mattot the builder',
+            'email' => 'mattot.builder@test.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::factory(50)->create();
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

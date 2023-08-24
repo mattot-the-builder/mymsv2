@@ -34,36 +34,54 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // user
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::post('/user/{keyword?}', [UserController::class, 'index'])->name('user.search');
     Route::get('/user/delete/{id?}', [UserController::class, 'destroy'])->name('user.destroy');
 
     // staff
     Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+    Route::post('/staff/{keyword?}', [StaffController::class, 'index'])->name('staff.search');
     Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
     Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
     Route::get('/staff/{id?}', [StaffController::class, 'show'])->name('staff.show');
+    Route::get('/staff/accept/{id?}', [StaffController::class, 'accept'])->name('staff.accept');
+    Route::get('/staff/reject/{id?}', [StaffController::class, 'reject'])->name('staff.reject');
     Route::get('/staff/delete/{id?}', [StaffController::class, 'destroy'])->name('staff.destroy');
 
     // expense claim
     Route::get('/expense-claim', [ExpenseClaimController::class, 'index'])->name('expense-claim.index');
+    Route::post('expense-claim/{keyword?}', [ExpenseClaimController::class, 'index'])->name('expense-claim.search');
     Route::get('/expense-claim/create', [ExpenseClaimController::class, 'create'])->name('expense-claim.create');
-    Route::post('/expense-claim', [ExpenseClaimController::class, 'store'])->name('expense-claim.store');
     Route::get('/expense-claim/{id?}', [ExpenseClaimController::class, 'show'])->name('expense-claim.show');
+    Route::get('/expense-claim/accept/{id?}', [ExpenseClaimController::class, 'accept'])->name('expense-claim.accept');
+    Route::get('/expense-claim/reject/{id?}', [ExpenseClaimController::class, 'reject'])->name('expense-claim.reject');
     Route::get('/expense-claim/delete/{id?}', [ExpenseClaimController::class, 'destroy'])->name('expense-claim.destroy');
 
     // mileage claim
     Route::get('/mileage-claim', [MileageClaimController::class, 'index'])->name('mileage-claim.index');
+    Route::post('/mileage-claim/{keyword?}', [MileageClaimController::class, 'index'])->name('mileage-claim.search');
     Route::get('/mileage-claim/create', [MileageClaimController::class, 'create'])->name('mileage-claim.create');
     Route::post('/mileage-claim', [MileageClaimController::class, 'store'])->name('mileage-claim.store');
     Route::get('/mileage-claim/{id?}', [MileageClaimController::class, 'show'])->name('mileage-claim.show');
+    Route::get('/mileage-claim/accept/{id?}', [MileageClaimController::class, 'accept'])->name('mileage-claim.accept');
+    Route::get('/mileage-claim/reject/{id?}', [MileageClaimController::class, 'reject'])->name('mileage-claim.reject');
     Route::get('/mileage-claim/delete/{id?}', [MileageClaimController::class, 'destroy'])->name('mileage-claim.destroy');
 
     // overtime claim
     Route::get('/overtime-claim', [OvertimeClaimController::class, 'index'])->name('overtime-claim.index');
+    Route::post('/overtime-claim/{keyword?}', [OvertimeClaimController::class, 'index'])->name('overtime-claim.search');
+    Route::get('/overtime-claim/create', [OvertimeClaimController::class, 'create'])->name('overtime-claim.create');
+    Route::get('/overtime-claim/{id?}', [OvertimeClaimController::class, 'show'])->name('overtime-claim.show');
+    Route::get('/overtime-claim/accept/{id?}', [OvertimeClaimController::class, 'accept'])->name('overtime-claim.accept');
+    Route::get('/overtime-claim/reject/{id?}', [OvertimeClaimController::class, 'reject'])->name('overtime-claim.reject');
+    Route::get('/overtime-claim/delete/{id?}', [OvertimeClaimController::class, 'destroy'])->name('overtime-claim.destroy');
 
     // leave request
     Route::get('/leave-request', [LeaveRequestController::class, 'index'])->name('leave-request.index');
+    Route::post('/leave-request/{keyword?}', [LeaveRequestController::class, 'index'])->name('leave-request.search');
     Route::get('/leave-request/create', [LeaveRequestController::class, 'create'])->name('leave-request.create');
     Route::post('/leave-request/store', [LeaveRequestController::class, 'store'])->name('leave-request.store');
     Route::get('/leave-request/{id?}', [LeaveRequestController::class, 'show'])->name('leave-request.show');
+    Route::get('/leave-request/accept/{id?}', [LeaveRequestController::class, 'accept'])->name('leave-request.accept');
+    Route::get('/leave-request/reject/{id?}', [LeaveRequestController::class, 'reject'])->name('leave-request.reject');
     Route::get('/leave-request/delete/{id?}', [LeaveRequestController::class, 'destroy'])->name('leave-request.destroy');
 });

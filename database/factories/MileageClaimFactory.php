@@ -15,16 +15,13 @@ class MileageClaimFactory extends Factory {
      */
     public function definition(): array {
         return [
-            //generate faker data for following
-            // staff_id	trip_date	trip_name	starting_location	destination	mileage	fuel_cost	total_claim
-            'staff_id' => 1,
-            'trip_date' => $this->faker->date(),
-            'trip_name' => $this->faker->word,
+            'trip_date' => $this->faker->dateTimeThisYear()->format('Y-m-d'),
+            'trip_name' => $this->faker->sentence($this->faker->numberBetween(3, 10), true),
             'starting_location' => $this->faker->city,
             'destination' => $this->faker->city,
-            'mileage' => $this->faker->randomFloat(2, 100, 1000),
-            'fuel_cost' => $this->faker->randomFloat(2, 10, 100),
-            'total_claim' => $this->faker->randomFloat(2, 100, 1000),
+            'mileage' => $this->faker->randomFloat(2, 10, 1000),
+            'fuel_cost' => $this->faker->randomFloat(2, 10, 1000),
+            'total_claim' => $this->faker->randomFloat(2, 10, 1000),
         ];
     }
 }

@@ -12,8 +12,14 @@ use Illuminate\Http\Request;
 class ExpenseClaimController extends Controller {
 
     // index function
-    public function index() {
-        $expense_claims = ExpenseClaim::all();
+    public function index(Request $request) {
+
+        if ($request->search) {
+            $expense_claims = ExpenseClaim::where('id', 'like', '%' . $request->search . '%')
+                ->paginate(10);
+            return view('elove.expense-claim.index', compact('expense_claims'));
+        }
+        $expense_claims = ExpenseClaim::latest('updated_at')->paginate(10);
         return view('elove/expense-claim/index', compact('expense_claims'));
     }
 
@@ -22,24 +28,32 @@ class ExpenseClaimController extends Controller {
         return view('elove/expense-claim/create');
     }
 
-    //store function
-    public function store(Request $request) {
-        dd('store fired');
-        // $expense_claim = new ExpenseClaim();
-        // $expense_claim->fill($request->all());
-        // $expense_claim->total_claim = 00.00;
-
-        // if (Auth::user()->staff->expenseClaims()->save($expense_claim)) {
-        //     return redirect()->route('expense-claim.index')->with('success', 'Expense claim created successfully.');
-        // } else {
-        //     return redirect()->route('expense-claim.create')->with('error', 'Expense claim failed to create.');
-        // }
-    }
-
     //show function
     public function show($id) {
         $expense_claim = ExpenseClaim::find($id);
         return view('elove/expense-claim/show', compact('expense_claim'));
+    }
+
+    // accept function
+    public function accept($id) {
+        $expense_claim = ExpenseClaim::find($id);
+        $expense_claim->status = 'accepted';
+        if ($expense_claim->save()) {
+            return redirect()->route('expense-claim.index')->with('success', 'Expense claim accepted successfully.');
+        } else {
+            return redirect()->route('expense-claim.index')->with('error', 'Expense claim failed to accept.');
+        }
+    }
+
+    // reject function
+    public function reject($id) {
+        $expense_claim = ExpenseClaim::find($id);
+        $expense_claim->status = 'rejected';
+        if ($expense_claim->save()) {
+            return redirect()->route('expense-claim.index')->with('success', 'Expense claim rejected successfully.');
+        } else {
+            return redirect()->route('expense-claim.index')->with('error', 'Expense claim failed to reject.');
+        }
     }
 
     //delete function

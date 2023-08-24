@@ -10,6 +10,7 @@
 
             <x-alert />
             <x-new-claim-button routeName="expense-claim.create" />
+            <x-search route="expense-claim.search" placeholder="expense claim" />
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
@@ -50,13 +51,21 @@
                                 <td class="px-6 py-4 ">
                                     <x-status-badge :status="$expense_claim->status" />
                                 </td>
+                                <td class="px-6 py-4">
 
-                                <x-action-delete routeName="expense-claim.destroy" id="{{ $expense_claim->id }}" />
+                                    <x-action-accept routeName="expense-claim.accept" id="{{ $expense_claim->id }}" />
+                                    <x-action-reject routeName="expense-claim.reject" id="{{ $expense_claim->id }}" />
+                                    <x-action-view routeName="expense-claim.show" id="{{ $expense_claim->id }}" />
+                                    <x-action-delete routeName="expense-claim.destroy" id="{{ $expense_claim->id }}" />
+                                </td>
                             </tr>
                             @endforeach
 
                         </tbody>
                     </table>
+                    <div class="pagination m-4">
+                        {{ $expense_claims->links() }}
+                    </div>
                 </div>
             </div>
         </div>

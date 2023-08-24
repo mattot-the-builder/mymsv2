@@ -12,7 +12,7 @@
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight p-6">
                     Create New Leave Request
                 </h2>
-                <form method="POST" action="{{ route('leave-request.store') }}">
+                <form method="POST" action="{{ route('leave-request.store') }}" enctype="multipart/form-data">
                     @csrf
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -44,7 +44,7 @@
                                 </td>
                             </tr>
 
-                            <x-show-item label="Attachment" value="N/A" />
+                            <x-form-image label="Attachment" name="attachment" />
 
                         </tbody>
 

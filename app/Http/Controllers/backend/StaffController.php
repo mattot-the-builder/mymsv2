@@ -12,8 +12,15 @@ use App\Models\Staff;
 class StaffController extends Controller {
 
     // index function
-    public function index() {
-        $staffs = Staff::all();
+    public function index(Request $request) {
+
+        if ($request->search) {
+            $staffs = Staff::where('id', 'like', '%' . $request->search . '%')
+                ->paginate(10);
+            return view('elove.staff.index', compact('staffs'));
+        }
+
+        $staffs = Staff::latest()->paginate(10);
         return view('elove.staff.index', compact('staffs'));
     }
 
@@ -22,27 +29,31 @@ class StaffController extends Controller {
         return view('elove.staff.create');
     }
 
-    // store function
-    // public function store(Request $request) {
-    //     $expense_claim = new ExpenseClaim();
-    //     $expense_claim->fill($request->all());
-    //     $expense_claim->total_claim = 00.00;
-
-    //     if (Auth::user()->staff->expenseClaims()->save($expense_claim)) {
-    //         return redirect()->route('expense-claim.index')->with('success', 'Expense claim created successfully.');
-    //     } else {
-    //         return redirect()->route('expense-claim.create')->with('error', 'Expense claim failed to create.');
-    //     }
-    // }
     public function store(Request $request) {
-        dd('remove this in store function');
+        // dd('remove this in store function');
+
         $staff = new Staff();
         $staff->fill($request->all());
+        $staff->user_id = Auth::user()->id;
 
-        if (Auth::user()->staff->save($staff)) {
-            return redirect()->route('staff.index')->with('success', 'Staff created successfully.');
+        dd('file issue not settle');
+
+        if ($request->hasFile('front_ic')) {
+            $front_ic = $staff->user_id . '_front_ic' . '.' . $request->file('front_ic')->extension();
+            $front_ic_path = $request->file('front_ic')->storeAs('photos/staff/front_ic', $front_ic, 'public');
+            $staff->front_ic = $front_ic_path;
+        }
+
+        if ($request->hasFile('back_ic')) {
+            $back_ic = $staff->user_id . '_back_ic' . '.' . $request->file('back_ic')->extension();
+            $back_ic_path = $request->file('back_ic')->storeAs('photos/staff/back_ic', $back_ic, 'public');
+            $staff->back_ic = $back_ic_path;
+        }
+
+        if ($staff->save()) {
+            return redirect()->route('staff.index')->with('success', 'Staff created successfully');
         } else {
-            return redirect()->route('staff.create')->with('error', 'Staff failed to create.');
+            return redirect()->route('staff.index')->with('error', 'Staff failed to create');
         }
     }
 
@@ -52,9 +63,30 @@ class StaffController extends Controller {
         return view('elove.staff.show', compact('staff'));
     }
 
-    // edit function
+    // accept function
+    public function accept($id) {
+        $staff = Staff::find($id);
+        $staff->is_approved = true;
 
-    // update function
+        if ($staff->save()) {
+            return redirect()->route('staff.index')->with('success', 'Staff accepted successfully');
+        } else {
+            return redirect()->route('staff.index')->with('error', 'Staff failed to accept');
+        }
+    }
+
+    // reject function
+    public function reject($id) {
+        $staff = Staff::find($id);
+        $staff->is_approved = false;
+
+        if ($staff->save()) {
+            return redirect()->route('staff.index')->with('success', 'Staff rejected successfully');
+        } else {
+            return redirect()->route('staff.index')->with('error', 'Staff failed to reject');
+        }
+    }
+
 
     // destroy function
     public function destroy($id) {

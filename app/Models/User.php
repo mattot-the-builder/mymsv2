@@ -60,6 +60,6 @@ class User extends Authenticatable {
 
     // function hasone staff
     public function staff() {
-        return $this->hasMany(Staff::class);
+        return $this->hasOne(Staff::class);
     }
 }

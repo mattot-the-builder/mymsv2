@@ -10,6 +10,7 @@
 
             <x-alert />
             <x-new-claim-button routeName="leave-request.create" />
+            <x-search route="leave-request.search" placeholder="leave request" />
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="relative overflow-x-auto">
@@ -47,41 +48,42 @@
 
                             @foreach ($leave_requests as $leave_request)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="px-6 py-4 font-medium dark:text-white">
                                     {{ $leave_request->id }}
                                 </th>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="px-6 py-4 font-medium ">
                                     {{ App\Models\Staff::find($leave_request->staff_id)->user->name }}
                                 </th>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="px-6 py-4 font-medium ">
                                     {{ $leave_request->reasons }}
                                 </th>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="px-6 py-4 font-medium ">
                                     {{ $leave_request->start_date }}
                                 </th>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="px-6 py-4 font-medium ">
                                     {{ $leave_request->end_date }}
                                 </th>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="px-6 py-4 font-medium ">
                                     {{ $leave_request->total_leave }}
                                 </th>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <th scope="row" class="px-6 py-4 font-medium ">
                                     <x-status-badge status="{{ $leave_request->status }}" />
                                 </th>
+                                <td class="px-6 py-4 ">
+                                    <x-action-accept routeName="leave-request.accept" id="{{ $leave_request->id }}" />
+                                    <x-action-reject routeName="leave-request.reject" id="{{ $leave_request->id }}" />
+                                    <x-action-view routeName="leave-request.show" id="{{ $leave_request->id }}" />
+                                    <x-action-delete routeName="leave-request.destroy" id="{{ $leave_request->id }}" />
+                                </td>
 
-                                <x-action-delete routeName="leave-request.destroy" id="{{ $leave_request->id }}" />
                             </tr>
                             @endforeach
 
                         </tbody>
                     </table>
+                    <div class="pagination m-4">
+                        {{ $leave_requests->links() }}
+                    </div>
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@
                         <x-show-item label="End Date" :value="$leave_request->end_date" />
                         <x-show-item label="Total Days" :value="$leave_request->total_leave" />
                         <x-show-item label="Reasons" :value="$leave_request->reasons" />
-                        <x-show-item label="Attachment" value="N/A" />
+                        <x-show-image label="Attachment" :value="$leave_request->attachment" />
                         <x-show-item label="Claim Status" :value="$leave_request->status" />
                         <x-show-item label="Created at" :value="$leave_request->created_at->diffForHumans()" />
 

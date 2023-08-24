@@ -10,8 +10,17 @@ use App\Models\User;
 class UserController extends Controller {
 
     //index function
-    public function index() {
-        $users = User::all();
+    public function index(Request $request) {
+
+        if ($request->search) {
+            $users = User::where('name', 'like', '%' . $request->search . '%')
+                ->orWhere('email', 'like', '%' . $request->search . '%')
+                ->paginate(10);
+
+            return view('backend.user.index', compact('users'));
+        }
+
+        $users = User::latest()->paginate(10);
         return view('backend.user.index', compact('users'));
     }
 

@@ -15,8 +15,7 @@ class ExpenseClaimFactory extends Factory {
      */
     public function definition(): array {
         return [
-            'staff_id' => 1,
-            'total_claim' => 200.50,
+            'total_claim' => $this->faker->randomFloat(2, 0, 5000),
         ];
     }
 }

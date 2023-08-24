@@ -6,4 +6,5 @@
     </x-slot>
 
     <livewire:expense-item-form />
+
 </x-app-layout>

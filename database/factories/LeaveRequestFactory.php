@@ -15,12 +15,10 @@ class LeaveRequestFactory extends Factory {
      */
     public function definition(): array {
         return [
-            // staff_id	start_date end_date total_leave	reasons	
-            'staff_id' => 1,
-            'start_date' => $this->faker->date(),
-            'end_date' => $this->faker->date(),
-            'total_leave' => 5,
-            'reasons' => 'Sick',
+            'start_date' => $this->faker->dateTimeThisYear()->format('Y-m-d'),
+            'end_date' => $this->faker->dateTimeThisYear()->format('Y-m-d'),
+            'total_leave' => $this->faker->numberBetween(1, 90),
+            'reasons' => $this->faker->sentence($this->faker->numberBetween(3, 10), true),
         ];
     }
 }

@@ -39,7 +39,7 @@ class LeaveRequestController extends Controller {
 
     // store function
     public function store(Request $request) {
-
+        dd('store');
         $start_date = Carbon::parse($request->start_date);
         $end_date = Carbon::parse($request->end_date);
 

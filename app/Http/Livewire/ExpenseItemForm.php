@@ -39,6 +39,8 @@ class ExpenseItemForm extends Component {
         if ($this->receipt) {
             $receipt = $this->receipt->temporaryUrl();
             $expense_item->receipt = $receipt;
+        } else {
+            $expense_item->receipt = null;
         }
 
         $this->expense_items[] = $expense_item;

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\OvertimeClaim;
 use Livewire\Component;
 use App\Models\OvertimeItem;
+use App\Models\User;
 
 use Carbon\Carbon;
 
@@ -47,11 +48,14 @@ class OvertimeItemForm extends Component {
         // dd(Auth::user()->staff->expenseClaims->last()->items);
 
         $overtime_claim = new OvertimeClaim();
+
         $overtime_claim->staff_id = Auth::user()->staff->id;
         $overtime_claim->ot_code = 1.5;
         $overtime_claim->total_claim = $this->total_hours * $overtime_claim->ot_code;
         $overtime_claim->total_hours = $this->total_hours;
         $overtime_claim->save();
+
+        Auth::user()->staff->overtimeClaims()->save($overtime_claim);
 
         $overtime_claim = Auth::user()->staff->overtimeClaims->last();
 

@@ -18,10 +18,11 @@ class MileageClaimController extends Controller {
     public function index(Request $request) {
         if ($request->search) {
             $mileage_claims = MileageClaim::where('id', 'like', '%' . $request->search . '%')
-                ->paginate(10);
+                ->sortable()->paginate(10);
             return view('elove.mileage-claim.index', compact('mileage_claims'));
         }
-        $mileage_claims = MileageClaim::latest('updated_at')->paginate(10);
+        $mileage_claims = MileageClaim::latest()
+            ->sortable()->paginate(10);
         return view('elove/mileage-claim/index', compact('mileage_claims'));
     }
 

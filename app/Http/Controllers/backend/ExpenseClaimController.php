@@ -19,10 +19,11 @@ class ExpenseClaimController extends Controller {
 
         if ($request->search) {
             $expense_claims = ExpenseClaim::where('id', 'like', '%' . $request->search . '%')
-                ->paginate(10);
+                ->sortable()->paginate(10);
             return view('elove.expense-claim.index', compact('expense_claims'));
         }
-        $expense_claims = ExpenseClaim::latest('updated_at')->paginate(10);
+        $expense_claims = ExpenseClaim::latest()
+            ->sortable()->paginate(10);
         return view('elove/expense-claim/index', compact('expense_claims'));
     }
 

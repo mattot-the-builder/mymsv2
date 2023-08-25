@@ -16,10 +16,12 @@ class OvertimeClaimController extends Controller {
     public function index(Request $request) {
         if ($request->search) {
             $overtime_claims = OvertimeClaim::where('id', 'like', '%' . $request->search . '%')
+                ->sortable()
                 ->paginate(10);
             return view('elove.overtime-claim.index', compact('overtime_claims'));
         }
-        $overtime_claims = OvertimeClaim::latest('updated_at')->paginate(10);
+        $overtime_claims = OvertimeClaim::latest()
+            ->sortable()->paginate(10);
         return view('elove/overtime-claim/index', compact('overtime_claims'));
     }
 

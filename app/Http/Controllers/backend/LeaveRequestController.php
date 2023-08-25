@@ -18,10 +18,12 @@ class LeaveRequestController extends Controller {
     public function index(Request $request) {
         if ($request->search) {
             $leave_requests = LeaveRequest::where('id', 'like', '%' . $request->search . '%')
+                ->sortable()
                 ->paginate(10);
             return view('elove.leave-request.index', compact('leave_requests'));
         }
-        $leave_requests = LeaveRequest::latest('updated_at')->paginate(10);
+        $leave_requests = LeaveRequest::latest()
+            ->sortable()->paginate(10);
         return view('elove/leave-request/index', compact('leave_requests'));
     }
 

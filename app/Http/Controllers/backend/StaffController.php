@@ -18,11 +18,12 @@ class StaffController extends Controller {
 
         if ($request->search) {
             $staffs = Staff::where('id', 'like', '%' . $request->search . '%')
+                ->sortable()
                 ->paginate(10);
             return view('elove.staff.index', compact('staffs'));
         }
 
-        $staffs = Staff::latest()->paginate(10);
+        $staffs = Staff::latest()->sortable()->paginate(10);
         return view('elove.staff.index', compact('staffs'));
     }
 

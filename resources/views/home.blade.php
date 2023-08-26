@@ -81,7 +81,7 @@
                     <div class="max-w-[700px] text-center">
                         <h2 class="mb-6 text-center text-3xl font-bold text-grey-800 dark:text-white">
                             About
-                            <u class="text-primary dark:text-primary-400">us</u>
+                            <u class="text-red-600">us</u>
                         </h2>
                         <p class="mb-16 text-gray-500 dark:text-gray-400">
                             In the pursuit of excellence and unwavering commitment, we navigate the intricate landscapes
@@ -99,7 +99,7 @@
 
 
                     <div class="mb-12 lg:mb-0" data-aos="fade-up" data-aos-duration="300">
-                        <div class="mb-6 inline-block rounded-full bg-primary-100 p-4 text-primary shadow-sm">
+                        <div class="mb-6 inline-block rounded-full bg-red-200 p-4 text-red-600 shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                 stroke="currentColor" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -109,14 +109,15 @@
 
 
                         </div>
-                        <h5 class="mb-4 text-lg font-bold text-grey-800 dark:text-white">Unparalleled Expertise</h5>
+                        <h5 class="mb-4 text-lg font-bold text-red-600 dark:text-red-600">Unparalleled Expertise
+                        </h5>
                         <p class="text-gray-500 dark:text-gray-400">
                             Our seasoned engineers bring decades of expertise for top-tier solutions and training.
                         </p>
                     </div>
 
                     <div class="mb-12 lg:mb-0" data-aos="fade-up" data-aos-duration="300" data-aos-delay="300">
-                        <div class="mb-6 inline-block rounded-full bg-primary-100 p-4 text-primary shadow-sm">
+                        <div class="mb-6 inline-block rounded-full bg-red-200 p-4 text-red-600 shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                 stroke="currentColor" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -127,7 +128,8 @@
 
 
                         </div>
-                        <h5 class="mb-4 text-lg font-bold text-grey-800 dark:text-white">Resourceful Problem-Solving
+                        <h5 class="mb-4 text-lg font-bold text-red-600">Resourceful
+                            Problem-Solving
                         </h5>
                         <p class="text-gray-500 dark:text-gray-400">
                             We excel in tackling challenges, pioneering solutions that redefine possibilities.
@@ -136,7 +138,7 @@
                     </div>
 
                     <div class="mb-12 lg:mb-0" data-aos="fade-up" data-aos-duration="300" data-aos-delay="600">
-                        <div class="mb-6 inline-block rounded-full bg-primary-100 p-4 text-primary shadow-sm">
+                        <div class="mb-6 inline-block rounded-full bg-red-200 p-4 text-red-600 shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                 stroke="currentColor" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -146,7 +148,7 @@
 
 
                         </div>
-                        <h5 class="mb-4 text-lg font-bold text-grey-800 dark:text-white">Enduring Impact</h5>
+                        <h5 class="mb-4 text-lg font-bold text-red-600">Enduring Impact</h5>
                         <p class="text-gray-500 dark:text-gray-400">
                             Our influence shapes industries and careers, crafting lasting legacies.
                         </p>
@@ -154,7 +156,7 @@
                     </div>
 
                     <div class="mb-12 lg:mb-0" data-aos="fade-up" data-aos-duration="300" data-aos-delay="900">
-                        <div class="mb-6 inline-block rounded-full bg-primary-100 p-4 text-primary shadow-sm">
+                        <div class="mb-6 inline-block rounded-full bg-red-200 p-4 text-red-600 shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                                 stroke="currentColor" class="h-6 w-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -164,7 +166,7 @@
 
 
                         </div>
-                        <h5 class="mb-4 text-lg font-bold text-grey-800 dark:text-white">Holistic Approach</h5>
+                        <h5 class="mb-4 text-lg font-bold text-red-600">Holistic Approach</h5>
                         <p class="text-gray-500 dark:text-gray-400">
                             Our approach ensures lasting success with tailored solutions.
                         </p>
@@ -190,7 +192,7 @@
                             class="flex h-full items-center rounded-lg bg-white dark:bg-gray-800 p-6 text-center text-white lg:pl-12 lg:text-left p-12">
                             <div data-aos="fade-down" class="lg:pl-12">
                                 <div class="border-b border-gray-200 dark:border-gray-700">
-                                    <h2 class="my-8 text-3xl font-bold text-primary dark:text-primary-400">Electrical
+                                    <h2 class="my-8 text-3xl font-bold text-red-600">Electrical
                                         Engineering
                                     </h2>
                                     <p class="mb-8 pb-2 lg:pb-0 text-gray-500 dark:text-gray-400">
@@ -219,22 +221,22 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
-                                            Meeting Diverse Needs
+                                            Embracing Diversity
                                         </p>
 
                                         <p data-aos="fade-left"
-                                            class="mx-auto mb-2 flex items-center md:mx-0 lg:mb-0 text-gray-900 dark:text-white">
+                                            class="mx-auto mb-4 flex items-center md:mx-0 md:mb-2 lg:mb-0 xl:mr-20 text-gray-900 dark:text-white">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="2" stroke="currentColor" class="mr-2 h-5 w-5">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
-                                            Excellence in Energy Optimization
+                                            Energy Excellence
                                         </p>
                                     </div>
                                 </div>
                                 <div class="mt-8" data-aos="fade-down">
-                                    <h2 class=" mb-8 text-3xl font-bold text-primary dark:text-primary-400">Academy
+                                    <h2 class=" mb-8 text-3xl font-bold text-red-600">Academy
                                     </h2>
                                     <p class="mb-8 pb-2 lg:pb-0 text-gray-500 dark:text-gray-400">
                                         Empower your team with our specialized academy offerings tailored for the public
@@ -292,7 +294,7 @@
                         </div>
                         <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
                             <div class="px-6 py-12 md:px-12">
-                                <h2 class="display-5 mb-6 text-4xl font-bold text-primary dark:text-primary-400">
+                                <h2 class="display-5 mb-6 text-4xl font-bold text-red-600">
                                     Experience
                                 </h2>
                                 <p class="mb-12 text-neutral-500 dark:text-neutral-300">
@@ -304,7 +306,7 @@
 
                                 <div class="grid md:grid-cols-3 lg:gap-x-12">
                                     <div class="mb-12 md:mb-0">
-                                        <h2 class="mb-4 text-6xl font-bold text-primary dark:text-primary-400">
+                                        <h2 class="mb-4 text-6xl font-bold text-red-600">
                                             1000
                                         </h2>
                                         <h5 class="mb-0 text-lg font-medium text-neutral-500 dark:text-neutral-300">
@@ -313,7 +315,7 @@
                                     </div>
 
                                     <div class="mb-12 md:mb-0">
-                                        <h2 class="mb-4 text-6xl font-bold text-primary dark:text-primary-400">
+                                        <h2 class="mb-4 text-6xl font-bold text-red-600">
                                             80%
                                         </h2>
                                         <h5 class="mb-0 text-lg font-medium text-neutral-500 dark:text-neutral-300">
@@ -322,7 +324,7 @@
                                     </div>
 
                                     <div class="">
-                                        <h2 class="mb-4 text-6xl font-bold text-primary dark:text-primary-400">
+                                        <h2 class="mb-4 text-6xl font-bold text-red-600">
                                             49
                                         </h2>
                                         <h5 class="mb-0 text-lg font-medium text-neutral-500 dark:text-neutral-300">
@@ -352,14 +354,14 @@
                         </div>
                         <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
                             <h2 class="mt-12 lg:mb-20 text-center text-3xl font-bold text-gray-900 dark:text-white">
-                                Contact <u class="text-primary dark:text-primary-400">Us</u>
+                                Contact <u class="text-red-600">Us</u>
                             </h2>
                             <div class="flex flex-wrap px-3 pt-12 pb-12 md:pb-0 lg:pt-0">
                                 <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="500"
                                     class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                                     <div class="flex items-start">
                                         <div class="shrink-0">
-                                            <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+                                            <div class="inline-block rounded-md bg-red-200 p-4 text-red-600">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="2" stroke="currentColor" class="h-6 w-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -381,7 +383,7 @@
                                     class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                                     <div class="flex items-start">
                                         <div class="shrink-0">
-                                            <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+                                            <div class="inline-block rounded-md bg-red-200 p-4 text-red-600">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="2" stroke="currentColor" class="h-6 w-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -406,7 +408,7 @@
                                     class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:mb-0 xl:w-6/12 xl:px-12">
                                     <div class="align-start flex">
                                         <div class="shrink-0">
-                                            <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+                                            <div class="inline-block rounded-md bg-red-200 p-4 text-red-600">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="2" stroke="currentColor" class="h-6 w-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -430,7 +432,7 @@
                                     class="w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                                     <div class="align-start flex">
                                         <div class="shrink-0">
-                                            <div class="inline-block rounded-md bg-primary-100 p-4 text-primary">
+                                            <div class="inline-block rounded-md bg-red-200 p-4 text-red-600">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="2" stroke="currentColor" class="h-6 w-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -460,7 +462,7 @@
             <section class="py-12 text-center lg:text-left" id="team">
 
                 <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
-                    Meet <u class="text-primary dark:text-primary-400">Our Team</u>
+                    Meet <u class="text-red-600">Our Team</u>
                 </h2>
 
                 <div class="grid gap-6 md:grid-cols-3 xl:gap-x-12">
@@ -482,7 +484,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- GitHub -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-4 w-4 text-primary dark:text-primary-400">
+                                                class="h-4 w-4 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                             </svg>
@@ -490,7 +492,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- Twitter -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-4 w-4 text-primary dark:text-primary-400">
+                                                class="h-4 w-4 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                                             </svg>
@@ -498,7 +500,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- Linkedin -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-3.5 w-3.5 text-primary dark:text-primary-400">
+                                                class="h-3.5 w-3.5 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
                                             </svg>
@@ -526,7 +528,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- GitHub -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-4 w-4 text-primary dark:text-primary-400">
+                                                class="h-4 w-4 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                             </svg>
@@ -534,7 +536,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- Twitter -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-4 w-4 text-primary dark:text-primary-400">
+                                                class="h-4 w-4 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                                             </svg>
@@ -542,7 +544,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- Linkedin -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-3.5 w-3.5 text-primary dark:text-primary-400">
+                                                class="h-3.5 w-3.5 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
                                             </svg>
@@ -570,7 +572,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- GitHub -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-4 w-4 text-primary dark:text-primary-400">
+                                                class="h-4 w-4 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                             </svg>
@@ -578,7 +580,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- Twitter -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-4 w-4 text-primary dark:text-primary-400">
+                                                class="h-4 w-4 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                                             </svg>
@@ -586,7 +588,7 @@
                                         <a href="#!" class="px-2">
                                             <!-- Linkedin -->
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="h-3.5 w-3.5 text-primary dark:text-primary-400">
+                                                class="h-3.5 w-3.5 text-red-600">
                                                 <path fill="currentColor"
                                                     d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
                                             </svg>
@@ -616,19 +618,27 @@
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
                 <div>
-                    <a href="https://flowbite.com/" class="flex items-center">
+                    {{-- <a href="https://flowbite.com/" class="flex items-center">
                         <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="FlowBite Logo" />
                         <span
                             class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-                    </a>
+                    </a> --}}
+                    <svg id="logo-54" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169.15 40">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    fill: red;
+                                }
+                            </style>
+                        </defs>
+                        <path class="cls-1"
+                            d="M51.18,28h11.95v-3.6h-7.7V10.84h-4.25V28Zm19.03-2.4c-1.7,0-2.59-1.49-2.59-3.72s.89-3.74,2.59-3.74,2.62,1.51,2.62,3.74-.91,3.72-2.62,3.72Zm.02,2.78c3.96,0,6.55-2.81,6.55-6.5s-2.59-6.5-6.55-6.5-6.58,2.81-6.58,6.5,2.64,6.5,6.58,6.5Zm13.41,3.86c1.82,0,3.43-.41,4.51-1.37,.98-.89,1.63-2.23,1.63-4.08V15.71h-3.74v1.32h-.05c-.72-1.03-1.82-1.68-3.46-1.68-3.05,0-5.16,2.54-5.16,6.14s2.57,5.83,5.33,5.83c1.49,0,2.42-.6,3.14-1.42h.1v1.22c0,1.49-.7,2.35-2.35,2.35-1.3,0-1.94-.55-2.16-1.2h-3.79c.38,2.57,2.62,3.96,6,3.96Zm-.02-7.82c-1.46,0-2.42-1.2-2.42-3.05s.96-3.07,2.42-3.07c1.63,0,2.5,1.39,2.5,3.05s-.79,3.07-2.5,3.07Zm13.87,1.18c-1.7,0-2.59-1.49-2.59-3.72s.89-3.74,2.59-3.74,2.62,1.51,2.62,3.74-.91,3.72-2.62,3.72Zm.02,2.78c3.96,0,6.55-2.81,6.55-6.5s-2.59-6.5-6.55-6.5-6.58,2.81-6.58,6.5,2.64,6.5,6.58,6.5Zm7.69-.38h3.91V15.71h-3.91v12.29Zm0-13.99h3.91v-3.17h-3.91v3.17Zm5.61,18.05h3.91v-5.33h.05c.77,1.03,1.9,1.66,3.48,1.66,3.22,0,5.35-2.54,5.35-6.53,0-3.7-1.99-6.5-5.26-6.5-1.68,0-2.88,.74-3.72,1.85h-.07v-1.49h-3.74v16.34Zm6.43-6.7c-1.68,0-2.64-1.37-2.64-3.36s.86-3.5,2.57-3.5,2.47,1.39,2.47,3.5-.91,3.36-2.4,3.36Zm12.73,3.02c3.22,0,5.59-1.39,5.59-4.08,0-3.14-2.54-3.7-4.7-4.06-1.56-.29-2.95-.41-2.95-1.27,0-.77,.74-1.13,1.7-1.13,1.08,0,1.82,.34,1.97,1.44h3.6c-.19-2.42-2.06-3.94-5.54-3.94-2.9,0-5.3,1.34-5.3,3.94,0,2.88,2.28,3.46,4.42,3.82,1.63,.29,3.12,.41,3.12,1.51,0,.79-.74,1.22-1.92,1.22-1.3,0-2.11-.6-2.26-1.82h-3.7c.12,2.71,2.38,4.37,5.98,4.37Zm10.91-.02c1.7,0,2.78-.67,3.67-1.87h.07v1.51h3.74V15.71h-3.91v6.86c0,1.46-.82,2.47-2.16,2.47-1.25,0-1.85-.74-1.85-2.09v-7.25h-3.89v8.06c0,2.74,1.49,4.58,4.32,4.58Zm9.19-.36h3.91v-6.89c0-1.46,.72-2.5,1.94-2.5s1.73,.77,1.73,2.09v7.3h3.91v-6.89c0-1.46,.7-2.5,1.94-2.5,1.18,0,1.73,.77,1.73,2.09v7.3h3.91v-7.99c0-2.76-1.39-4.66-4.18-4.66-1.58,0-2.9,.67-3.86,2.16h-.05c-.62-1.32-1.85-2.16-3.46-2.16-1.78,0-2.95,.84-3.72,2.11h-.07v-1.75h-3.74v12.29ZM20,0C8.95,0,0,8.95,0,20s8.95,20,20,20,20-8.95,20-20S31.05,0,20,0Zm8.81,22.21l-13.35,9.51c-.96,.68-2,.04-1.7-1.04l2.46-8.74,5.58-1.97h-6.85v.03h-3.51c-1.12,0-1.28-1.47-.24-2.21l13.35-9.51c.96-.68,2-.04,1.7,1.04l-3.01,10.68h5.33c1.12,0,1.28,1.47,.25,2.21Z" />
+                    </svg>
                     <div class="mt-6">
                         <p class="text-gray-500 dark:text-gray-400">For general Inquiries</p>
                         <h2 class="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">admin@myms.co</h2>
                     </div>
                 </div>
-
-
-
 
             </div>
 

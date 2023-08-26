@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -158,6 +158,10 @@
                                     {{ __('Manage Account') }}
                                 </div>
 
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{-- {{ Auth::user()->getRoleNames()[0] }} --}}
+                                </div>
+
                                 <x-dropdown-link href="{{ route('profile.show') }}">
                                     {{ __('Profile') }}
                                 </x-dropdown-link>
@@ -206,6 +210,39 @@
                 <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
+                    {{ __('User') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('staff.index') }}" :active="request()->routeIs('staff.index')">
+                    {{ __('Staff') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('expense-claim.index') }}"
+                    :active="request()->routeIs('expense-claim.index')">
+                    {{ __('Expense Claim') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('mileage-claim.index') }}"
+                    :active="request()->routeIs('mileage-claim.index')">
+                    {{ __('Mileage Claim') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('overtime-claim.index') }}"
+                    :active="request()->routeIs('overtime-claim.index')">
+                    {{ __('Overtime Claim') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('leave-request.index') }}"
+                    :active="request()->routeIs('leave-request.index')">
+                    {{ __('Leave Request') }}
+                </x-responsive-nav-link>
+
+                {{-- <x-responsive-nav-link href="{{ route('course.index') }}"
+                    :active="request()->routeIs('course.index')">
+                    {{ __('Course') }}
+                </x-responsive-nav-link> --}}
             </div>
 
             <!-- Responsive Settings Options -->

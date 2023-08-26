@@ -14,7 +14,7 @@
                 Add New Leave Request
             </a>
 
-            <div class="flex justify-between">
+            <div class="flex flex-wrap justify-between">
                 <x-search route="leave-request.search" placeholder="leave request" />
                 <x-export-excel route="leave-request.export.excel" />
             </div>
@@ -141,8 +141,54 @@
 
                         </tbody>
                     </table>
-                    <div class="pagination m-4">
-                        {{ $leave_requests->links() }}
+                    <div class="relative overflow-x-auto flex flex-wrap justify-between">
+                        <div class="m-4">
+                            <span class="text-sm text-gray-700 dark:text-gray-400">
+                                Showing <span class="font-semibold text-gray-900 dark:text-white">{{
+                                    $leave_requests->firstItem()
+                                    }}</span> to <span class="font-semibold text-gray-900 dark:text-white">{{
+                                    $leave_requests->lastItem() }}</span> of <span
+                                    class="font-semibold text-gray-900 dark:text-white">{{ $leave_requests->total()
+                                    }}</span> Entries
+                            </span>
+                        </div>
+                        <div class="m-4">
+
+                            <nav aria-label="Page navigation example">
+                                <ul class="inline-flex -space-x-px text-base h-10">
+                                    <li>
+
+                                        <a href="{{ $leave_requests->previousPageUrl() }}"
+                                            class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                            <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 5H1m0 0 4 4M1 5l4-4" />
+                                            </svg>Previous</a>
+                                    </li>
+
+
+                                    @for ($page = 1; $page <= $leave_requests->lastPage(); $page++) <li>
+                                            <a href="{{ url()->current() .'?page='. $page }}"
+                                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                                {{ $page }}
+                                            </a>
+                                        </li>
+                                        @endfor
+                                        <li>
+                                            <a href="{{ $leave_requests->nextPageUrl()  }}"
+                                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next
+                                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                                </svg></a>
+                                        </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>

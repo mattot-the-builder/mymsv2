@@ -44,7 +44,6 @@ class MileageClaimController extends Controller {
 
     //store function
     public function store(Request $request) {
-        dd('store');
         $mileage_claim = new MileageClaim();
         $mileage_claim->fill($request->all());
 

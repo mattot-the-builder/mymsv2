@@ -51,12 +51,11 @@
                     class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
                     <div class="flex h-full items-center justify-center">
                         <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
-                            <h2 class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
+                            <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
+                                class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
                                 Unlocking Possibilities
                             </h2>
-                            <p class="text-xl text-semibold">
-                                Empowering Innovation Through Electrical Engineering Excellence. <br>
-                                Elevate Your Career with Expert-Led Certification Classes.
+                            <p class="text-xl text-semibold" id="typing-text">
                             </p>
                             <div class="mt-12">
                                 <a href="{{ route('register') }}"
@@ -72,7 +71,7 @@
 
 
         <!-- Page Content -->
-        <main class="container mx-auto md:px-6">
+        <main class=" mx-auto md:px-6">
 
 
             <section class="py-12 text-center" id="about">
@@ -610,6 +609,25 @@
 
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
+    @push('scripts')
+    <script>
+        const text = "Empowering Innovation Through Electrical Engineering Excellence. Elevate Your Career with Expert-Led Certification Classes.";
+        const typingSpeed = 30; // Adjust this value to control typing speed in milliseconds
+
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                document.getElementById("typing-text").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeText, typingSpeed);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(typeText, 1000);
+        });
+    </script>
 </body>
 
 

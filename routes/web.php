@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\StaffController;
 use App\Http\Controllers\backend\StudentRegistrationController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,10 +42,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // staff
     Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+    Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
     Route::post('/staff/{keyword?}', [StaffController::class, 'index'])->name('staff.search');
     Route::get('/staff/export', [StaffController::class, 'exportAsExcel'])->name('staff.export.excel');
     Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
-    Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
+
     Route::get('/staff/{id?}', [StaffController::class, 'show'])->name('staff.show');
     Route::get('/staff/accept/{id?}', [StaffController::class, 'accept'])->name('staff.accept');
     Route::get('/staff/reject/{id?}', [StaffController::class, 'reject'])->name('staff.reject');
@@ -62,10 +64,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // mileage claim
     Route::get('/mileage-claim', [MileageClaimController::class, 'index'])->name('mileage-claim.index');
+    Route::post('/mileage-claim', [MileageClaimController::class, 'store'])->name('mileage-claim.store');
     Route::post('/mileage-claim/{keyword?}', [MileageClaimController::class, 'index'])->name('mileage-claim.search');
     Route::get('/mileage-claim/export', [MileageClaimController::class, 'exportAsExcel'])->name('mileage-claim.export.excel');
     Route::get('/mileage-claim/create', [MileageClaimController::class, 'create'])->name('mileage-claim.create');
-    Route::post('/mileage-claim', [MileageClaimController::class, 'store'])->name('mileage-claim.store');
     Route::get('/mileage-claim/{id?}', [MileageClaimController::class, 'show'])->name('mileage-claim.show');
     Route::get('/mileage-claim/accept/{id?}', [MileageClaimController::class, 'accept'])->name('mileage-claim.accept');
     Route::get('/mileage-claim/reject/{id?}', [MileageClaimController::class, 'reject'])->name('mileage-claim.reject');
@@ -83,10 +85,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // leave request
     Route::get('/leave-request', [LeaveRequestController::class, 'index'])->name('leave-request.index');
+    Route::post('/leave-request', [LeaveRequestController::class, 'store'])->name('leave-request.store');
     Route::post('/leave-request/{keyword?}', [LeaveRequestController::class, 'index'])->name('leave-request.search');
     Route::get('/leave-request/export', [LeaveRequestController::class, 'exportAsExcel'])->name('leave-request.export.excel');
     Route::get('/leave-request/create', [LeaveRequestController::class, 'create'])->name('leave-request.create');
-    Route::post('/leave-request/store', [LeaveRequestController::class, 'store'])->name('leave-request.store');
     Route::get('/leave-request/{id?}', [LeaveRequestController::class, 'show'])->name('leave-request.show');
     Route::get('/leave-request/accept/{id?}', [LeaveRequestController::class, 'accept'])->name('leave-request.accept');
     Route::get('/leave-request/reject/{id?}', [LeaveRequestController::class, 'reject'])->name('leave-request.reject');

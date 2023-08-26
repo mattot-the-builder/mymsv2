@@ -99,10 +99,12 @@
                     <div class="relative overflow-x-auto flex flex-wrap justify-between">
                         <div class="m-4">
                             <span class="text-sm text-gray-700 dark:text-gray-400">
-                                Showing <span class="font-semibold text-gray-900 dark:text-white">{{ $users->firstItem()
+                                Showing <span class="font-semibold text-gray-900 dark:text-white">{{
+                                    $expense_claims->firstItem()
                                     }}</span> to <span class="font-semibold text-gray-900 dark:text-white">{{
-                                    $users->lastItem() }}</span> of <span
-                                    class="font-semibold text-gray-900 dark:text-white">{{ $users->total() }}</span>
+                                    $expense_claims->lastItem() }}</span> of <span
+                                    class="font-semibold text-gray-900 dark:text-white">{{ $expense_claims->total()
+                                    }}</span>
                                 Entries
                             </span>
                         </div>
@@ -112,7 +114,7 @@
                                 <ul class="inline-flex -space-x-px text-base h-10">
                                     <li>
 
-                                        <a href="{{ $users->previousPageUrl() }}"
+                                        <a href="{{ $expense_claims->previousPageUrl() }}"
                                             class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                             <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -123,7 +125,7 @@
                                     </li>
 
 
-                                    @for ($page = 1; $page <= $users->lastPage(); $page++) <li>
+                                    @for ($page = 1; $page <= $expense_claims->lastPage(); $page++) <li>
                                             <a href="{{ url()->current() .'?page='. $page }}"
                                                 class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                                 {{ $page }}
@@ -131,7 +133,7 @@
                                         </li>
                                         @endfor
                                         <li>
-                                            <a href="{{ $users->nextPageUrl()  }}"
+                                            <a href="{{ $expense_claims->nextPageUrl()  }}"
                                                 class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next
                                                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

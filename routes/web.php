@@ -1,6 +1,6 @@
 <?php
 
-// use App\Http\Controllers\backend\CourseController;
+use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\ExpenseClaimController;
 use App\Http\Controllers\backend\MileageClaimController;
 use App\Http\Controllers\backend\OvertimeClaimController;
@@ -46,7 +46,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('/staff/{keyword?}', [StaffController::class, 'index'])->name('staff.search');
     Route::get('/staff/export', [StaffController::class, 'exportAsExcel'])->name('staff.export.excel');
     Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
-
     Route::get('/staff/{id?}', [StaffController::class, 'show'])->name('staff.show');
     Route::get('/staff/accept/{id?}', [StaffController::class, 'accept'])->name('staff.accept');
     Route::get('/staff/reject/{id?}', [StaffController::class, 'reject'])->name('staff.reject');
@@ -97,21 +96,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // student registration
     Route::get('/register-programme', [StudentRegistrationController::class, 'create'])->name('student-registration.create');
     Route::post('/checkout', [StudentRegistrationController::class, 'checkout'])->name('student-registration.checkout');
+    Route::get('/register-programme/success', [StudentRegistrationController::class, 'success'])->name('success');
 
-    Route::get('/success', function () {
-        return view('backend/student-registration/success');
-    })->name('success');
-    Route::get('/fail', function () {
-        dd('payment fail');
-    })->name('checkout');
 
-    // course
-    // Route::get('/course', [CourseController::class, 'index'])->name('course.index');
-    // Route::post('/course/{keyword?}', [CourseController::class, 'index'])->name('course.search');
-    // Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
-    // Route::post('/course/store', [CourseController::class, 'store'])->name('course.store');
-    // Route::get('/course/export', [CourseController::class, 'exportAsExcel'])->name('course.export.excel');
-    // Route::get('/course/delete/{id?}', [CourseController::class, 'destroy'])->name('course.destroy');
+    Route::get('/course', [CourseController::class, 'index'])->name('course.index');
+    Route::post('/course', [CourseController::class, 'store'])->name('course.store');
+    Route::post('/course/{keyword?}', [CourseController::class, 'index'])->name('course.search');
+    Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
+    Route::get('/course/export', [CourseController::class, 'exportAsExcel'])->name('course.export.excel');
+    Route::get('/course/delete/{id?}', [CourseController::class, 'destroy'])->name('course.destroy');
 
     Route::get('/debug-route', function () {
         dd('Debug route working');

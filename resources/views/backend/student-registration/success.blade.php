@@ -7,7 +7,7 @@
 
     <div class="py-12 px-3">
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-center">
             <div
                 class="p-6 bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6 text-gray-500 dark:text-gray-400">
                 <h1 class="text-2xl font-medium text-gray-900 dark:text-white">
@@ -25,8 +25,28 @@
                         Course Registered
                     </p>
                     <h1 class="text-2xl font-medium text-gray-900 dark:text-white">
-                        {{ __('Course Name') }}
+                        {{ \App\Models\Course::find($session->client_reference_id)->name }}
                     </h1>
+                </div>
+
+                <div class="flex">
+                    <div class="mt-6 mr-12">
+                        <p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Payment Method
+                        </p>
+                        <h1 class="text-2xl font-medium text-gray-900 dark:text-white">
+                            {{ $session->payment_method_types[0] }}
+                        </h1>
+                    </div>
+
+                    <div class="mt-6 mr-12">
+                        <p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+                            Payment Status
+                        </p>
+                        <h1 class="text-2xl font-medium text-gray-900 dark:text-white">
+                            {{ $session->payment_status }}
+                        </h1>
+                    </div>
                 </div>
 
                 <div class="mt-6 mr-12">
@@ -34,7 +54,7 @@
                         Total Amount
                     </p>
                     <h1 class="text-2xl font-medium text-gray-900 dark:text-white">
-                        RM {{ __('50.00') }}
+                        RM {{ $session->amount_total / 100 }}
                     </h1>
                 </div>
 

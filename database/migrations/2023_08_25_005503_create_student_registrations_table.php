@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained();
             $table->string('contact');
             $table->foreignId('course_id')->constrained();
-            $table->string('status');
+            $table->string('payment_id');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

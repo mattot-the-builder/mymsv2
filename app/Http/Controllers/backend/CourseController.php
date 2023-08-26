@@ -55,8 +55,15 @@ class CourseController extends Controller {
     }
 
     public function store(Request $request) {
-        dd('Debug route working');
-        dd('store function');
+        $course = new Course();
+        $course->name = $request->name;
+        $course->details = $request->details;
+
+        if ($course->save()) {
+            return redirect()->route('course.index')->with('success', 'Course created successfully');
+        } else {
+            return redirect()->route('course.index')->with('error', 'Course failed to create');
+        }
     }
 
     // public function storeTest(Request $request) {

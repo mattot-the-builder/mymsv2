@@ -51,7 +51,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ __('#') }}" :active="request()->routeIs('course.index')">
+                    <x-nav-link href="{{ route('course.index') }}" :active="request()->routeIs('course.index')">
                         {{ __('Course') }}
                     </x-nav-link>
                 </div>
@@ -239,10 +239,9 @@
                     {{ __('Leave Request') }}
                 </x-responsive-nav-link>
 
-                {{-- <x-responsive-nav-link href="{{ route('course.index') }}"
-                    :active="request()->routeIs('course.index')">
+                <x-responsive-nav-link href="{{ route('course.index') }}" :active="request()->routeIs('course.index')">
                     {{ __('Course') }}
-                </x-responsive-nav-link> --}}
+                </x-responsive-nav-link>
             </div>
 
             <!-- Responsive Settings Options -->

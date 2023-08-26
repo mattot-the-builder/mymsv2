@@ -10,7 +10,7 @@ class UsersExport implements FromCollection {
      * @return \Illuminate\Support\Collection
      */
     public function collection() {
-        $users = User::select('id', 'name', 'email')->get();
+        $users = User::all();
         $users->makeHidden(['profile_photo_url']);
         return $users;
     }

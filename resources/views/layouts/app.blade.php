@@ -27,7 +27,7 @@
     </script>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased overflow-x-hidden">
     <x-banner />
 
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -43,7 +43,7 @@
         @endif
 
         <!-- Page Content -->
-        <main class="px-6 mx-auto">
+        <main class="p-6 mx-auto">
             {{ $slot }}
         </main>
     </div>

@@ -94,6 +94,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/leave-request/delete/{id?}', [LeaveRequestController::class, 'destroy'])->name('leave-request.destroy');
 
     // student registration
+    Route::get('/registration', [StudentRegistrationController::class, 'index'])->name('student-registration.index');
     Route::get('/register-programme', [StudentRegistrationController::class, 'create'])->name('student-registration.create');
     Route::post('/checkout', [StudentRegistrationController::class, 'checkout'])->name('student-registration.checkout');
     Route::get('/register-programme/success', [StudentRegistrationController::class, 'success'])->name('success');

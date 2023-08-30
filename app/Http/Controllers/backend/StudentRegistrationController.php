@@ -8,9 +8,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\StudentRegistration;
-use Stripe\Stripe;
+use App\Exports\StudentRegistrationExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class StudentRegistrationController extends Controller {
+
+    //index function
+    public function index(Request $request) {
+        $student_registrations = StudentRegistration::sortable()->latest()->paginate(10);
+        return view('backend.student-registration.index', compact('student_registrations'));
+    }
+
     // create function
     public function create() {
         $courses = Course::all();
@@ -38,7 +47,7 @@ class StudentRegistrationController extends Controller {
             'customer_email' => Auth::user()->email,
             'client_reference_id' => $request->course,
             'mode' => 'payment',
-            'success_url' => 'http://localhost:8000/register-programme/success?session_id={CHECKOUT_SESSION_ID}&contact=' . $request->contact,
+            'success_url' => env('APP_URL') . '/register-programme/success?session_id={CHECKOUT_SESSION_ID}&contact=' . $request->contact,
             // 'success_url' => route('success', ['session_id' => '{CHECKOUT_SESSION_ID}', 'course_id' => $request->course, 'contact' => $request->contact]),
             // 'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
         ]);
@@ -73,5 +82,20 @@ class StudentRegistrationController extends Controller {
         // Handle your application logic based on the payment status
         // Redirect to a thank-you page or display success message
 
+    }
+
+    // exportAsExcel function
+    public function exportAsExcel() {
+        return Excel::download(new StudentRegistrationExport, 'student-registration.xlsx');
+    }
+
+    // destroy function
+    public function destroy($id) {
+        $student_registration = StudentRegistration::find($id);
+        if ($student_registration->delete()) {
+            return redirect()->route('student-registration.index')->with('success', 'Student registration deleted successfully');
+        } else {
+            return redirect()->route('student-registration.index')->with('error', 'Student registration failed to delete');
+        }
     }
 }

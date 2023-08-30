@@ -26,6 +26,13 @@
                         {{ __('Staff') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('student-registration.index') }}"
+                        :active="request()->routeIs('student-registration.index')">
+                        {{ __('Registration') }}
+                    </x-nav-link>
+                </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('expense-claim.index') }}"
                         :active="request()->routeIs('expense-claim.index')">
@@ -206,8 +213,10 @@
 
         <!-- Responsive Navigation Menu -->
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
 
@@ -217,6 +226,16 @@
 
                 <x-responsive-nav-link href="{{ route('staff.index') }}" :active="request()->routeIs('staff.index')">
                     {{ __('Staff') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('student-registration.index') }}"
+                    :active="request()->routeIs('student-registration.index')">
+                    {{ __('Registration') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('student-registration.index') }}"
+                    :active="request()->routeIs('student-registration.index')">
+                    {{ __('Registration') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link href="{{ route('expense-claim.index') }}"

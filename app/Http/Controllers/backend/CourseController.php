@@ -77,7 +77,6 @@ class CourseController extends Controller {
     // destroy function
     public function destroy($id) {
         $course = Course::findOrFail($id);
-        $course->delete();
         if ($course->delete()) {
             return redirect()->route('course.index')->with('success', 'Course deleted successfully');
         } else {

@@ -71,7 +71,7 @@
 
 
         <!-- Page Content -->
-        <main class=" mx-auto md:px-6">
+        <main class="p-6 mx-auto md:px-6 overflow-x-hidden">
 
 
             <section class="py-12 text-center" id="about">
@@ -356,7 +356,7 @@
                                 Contact <u class="text-red-600">Us</u>
                             </h2>
                             <div class="flex flex-wrap px-3 pt-12 pb-12 md:pb-0 lg:pt-0">
-                                <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="500"
+                                <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="300"
                                     class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                                     <div class="flex items-start">
                                         <div class="shrink-0">
@@ -378,7 +378,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="1000"
+                                <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="600"
                                     class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                                     <div class="flex items-start">
                                         <div class="shrink-0">
@@ -403,7 +403,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="1500"
+                                <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="300"
                                     class="mb-12 w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:mb-0 xl:w-6/12 xl:px-12">
                                     <div class="align-start flex">
                                         <div class="shrink-0">
@@ -427,7 +427,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="2000"
+                                <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="1200"
                                     class="w-full shrink-0 grow-0 basis-auto px-3 md:w-6/12 md:px-6 lg:w-full xl:w-6/12 xl:px-12">
                                     <div class="align-start flex">
                                         <div class="shrink-0">

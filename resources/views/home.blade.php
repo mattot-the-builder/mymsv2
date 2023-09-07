@@ -625,9 +625,9 @@
         <script>
             const text = "Empowering Innovation Through Electrical Engineering Excellence. Elevate Your Career with Expert-Led Certification Classes.";
             const typingSpeed = 30; // Adjust this value to control typing speed in milliseconds
-    
+
             let index = 0;
-    
+
             function typeText() {
                 if (index < text.length) {
                     document.getElementById("typing-text").innerHTML += text.charAt(index);
@@ -635,7 +635,7 @@
                     setTimeout(typeText, typingSpeed);
                 }
             }
-    
+
             document.addEventListener("DOMContentLoaded", function() {
             setTimeout(typeText, 1000);
             });

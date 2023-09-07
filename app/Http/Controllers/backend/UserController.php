@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\backend;
 
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,11 +9,11 @@ use App\Models\User;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 
-
-class UserController extends Controller {
-
+class UserController extends Controller
+{
     //index function
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         $items = ['name', 'email', 'created_at'];
 
@@ -33,18 +32,21 @@ class UserController extends Controller {
     }
 
     // export function
-    public function exportAsExcel() {
-        return Excel::download(new UsersExport, 'users.xlsx');
+    public function exportAsExcel()
+    {
+        return Excel::download(new UsersExport(), 'users.xlsx');
     }
 
     // register programme function
-    public function registerProgramme() {
+    public function registerProgramme()
+    {
         return view('backend.user.register-programme');
     }
 
 
     //destroy function
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $user = User::find($id);
 
         if ($user->delete()) {
@@ -53,4 +55,5 @@ class UserController extends Controller {
             return redirect()->route('user.index')->with('error', 'User failed to delete');
         }
     }
+
 }

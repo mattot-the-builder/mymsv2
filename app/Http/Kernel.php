@@ -12,7 +12,7 @@ class Kernel extends HttpKernel
      * These middleware are run during every request to your application.
      *
      * @var array<int, class-string|string>
-     */
+*/
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
@@ -43,6 +43,12 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'adminer' => [
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Session\Middleware\StartSession::class
+        ]
+
     ];
 
     /**

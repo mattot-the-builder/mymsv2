@@ -10,9 +10,9 @@ class Course extends Model {
     use HasFactory;
     use Sortable;
 
-    public $sortable = ['id', 'name', 'created_at', 'updated_at'];
+    public $sortable = ['id', 'name', 'date', 'updated_at'];
 
-    protected $fillable = ['name', 'details'];
+    protected $fillable = ['name', 'contents', 'started_at', 'ended_at', 'fee'];
 
     public function studentRegistrations() {
         return $this->hasMany(StudentRegistration::class);

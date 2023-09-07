@@ -18,7 +18,6 @@ class CourseController extends Controller {
         if ($request->keyword) {
             $keyword = $request->keyword;
             $courses = Course::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('details', 'LIKE', "%$keyword%")
                 ->sortable()
                 ->latest()
                 ->paginate(10);
@@ -30,18 +29,14 @@ class CourseController extends Controller {
         return view('backend/course/index', compact('courses', 'items'));
     }
 
-    // store function
-    // public function store(Request $request) {
-    //     dd($request->all());
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'details' => 'required',
-    //     ]);
+    public function create() {
+        return view('backend/course/create');
+    }
 
+    // public function store(Request $request) {
     //     $course = new Course();
     //     $course->name = $request->name;
     //     $course->details = $request->details;
-    //     $course->save();
 
     //     if ($course->save()) {
     //         return redirect()->route('course.index')->with('success', 'Course created successfully');
@@ -49,22 +44,6 @@ class CourseController extends Controller {
     //         return redirect()->route('course.index')->with('error', 'Course failed to create');
     //     }
     // }
-
-    public function create() {
-        return view('backend/course/create');
-    }
-
-    public function store(Request $request) {
-        $course = new Course();
-        $course->name = $request->name;
-        $course->details = $request->details;
-
-        if ($course->save()) {
-            return redirect()->route('course.index')->with('success', 'Course created successfully');
-        } else {
-            return redirect()->route('course.index')->with('error', 'Course failed to create');
-        }
-    }
 
     // public function storeTest(Request $request) {
     //     dd('store test function');

@@ -99,9 +99,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('/checkout', [StudentRegistrationController::class, 'checkout'])->name('student-registration.checkout');
     Route::get('/register-programme/success', [StudentRegistrationController::class, 'success'])->name('success');
 
-
+    // course
     Route::get('/course', [CourseController::class, 'index'])->name('course.index');
-    Route::post('/course', [CourseController::class, 'store'])->name('course.store');
+    // Route::post('/course', [CourseController::class, 'store'])->name('course.store');
     Route::post('/course/{keyword?}', [CourseController::class, 'index'])->name('course.search');
     Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
     Route::get('/course/export', [CourseController::class, 'exportAsExcel'])->name('course.export.excel');

@@ -34,7 +34,6 @@
                             <x-form-number label="Mileage" name="mileage" />
                             <x-form-number label="Fuel Cost" name="fuel_cost" />
                             <x-form-image label="Attachment" name="attachment" />
-
                         </tbody>
 
                         <tfoot>

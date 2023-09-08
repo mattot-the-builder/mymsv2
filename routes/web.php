@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\ExpenseClaimController;
 use App\Http\Controllers\backend\MileageClaimController;
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Route::view('/test', 'test');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -107,7 +110,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/course/export', [CourseController::class, 'exportAsExcel'])->name('course.export.excel');
     Route::get('/course/delete/{id?}', [CourseController::class, 'destroy'])->name('course.destroy');
 
-    Route::get('/debug-route', function () {
-        dd('Debug route working');
-    });
+    Route::post('/tmp-upload', [FileUploadController::class, 'tmpUpload']);
+    Route::delete('/tmp-delete', [FileUploadController::class, 'tmpDelete']);
 });

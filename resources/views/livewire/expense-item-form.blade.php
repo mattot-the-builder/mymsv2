@@ -68,7 +68,8 @@
                             </th>
                             <td class="px-6 py-4">
                                 @if ($receipt)
-                                <img class="h-20 max-w-full mb-6" src="{{ $receipt->temporaryUrl() }}" alt="img" />
+                                    <img class="h-20 max-w-full mb-6" src="{{ $receipt->temporaryUrl() }}"
+                                        alt="img" />
                                 @endif
                                 <label for="dropzone-file"
                                     class="flex flex-col items-center justify-center w-full h-25 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
@@ -91,6 +92,10 @@
                             </td>
                         </tr>
 
+
+                        <tr>
+                            <x-form-image label="Attachment" name="attachment" />
+                        </tr>
                     </tbody>
 
                     <tfoot>
@@ -150,29 +155,30 @@
                     <tbody>
 
                         @foreach ($expense_items as $expense_item)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $loop->index + 1 }}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{ $expense_item['date'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $expense_item['details'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $expense_item['amount'] }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <img class="h-20 max-w-full" src="{{ $expense_item['receipt'] }}" alt="img" />
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="#" type="button"
-                                    class="font-medium text-red-600 dark:text-red-500 hover:underline"
-                                    wire:click="destroy({{ $expense_item['index'] }})">Remove</a>
-                            </td>
-                        </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $loop->index + 1 }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $expense_item['date'] }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $expense_item['details'] }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $expense_item['amount'] }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <img class="h-20 max-w-full" src="{{ $expense_item['receipt'] }}"
+                                        alt="img" />
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="#" type="button"
+                                        class="font-medium text-red-600 dark:text-red-500 hover:underline"
+                                        wire:click="destroy({{ $expense_item['index'] }})">Remove</a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                     <tfoot>

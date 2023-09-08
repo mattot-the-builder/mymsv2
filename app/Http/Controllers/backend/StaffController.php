@@ -11,10 +11,11 @@ use App\Models\Staff;
 use App\Exports\StaffExport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class StaffController extends Controller {
-
+class StaffController extends Controller
+{
     // index function
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
 
         if ($request->search) {
             $staffs = Staff::where('id', 'like', '%' . $request->search . '%')
@@ -28,29 +29,34 @@ class StaffController extends Controller {
     }
 
     // export function
-    public function exportAsExcel() {
-        return Excel::download(new StaffExport, 'staff.xlsx');
+    public function exportAsExcel()
+    {
+        return Excel::download(new StaffExport(), 'staff.xlsx');
     }
 
     // create function
-    public function create() {
+    public function create()
+    {
         return view('elove.staff.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         // dd('remove this in store function');
 
         $staff = new Staff();
         $staff->fill($request->all());
         $staff->user_id = Auth::user()->id;
 
-        dd('file issue not settle');
+        // dd('file issue not settle');
 
         if ($request->hasFile('front_ic')) {
             $front_ic = $staff->user_id . '_front_ic' . '.' . $request->file('front_ic')->extension();
             $front_ic_path = $request->file('front_ic')->storeAs('photos/staff/front_ic', $front_ic, 'public');
             $staff->front_ic = $front_ic_path;
         }
+
+        dd($request->hasFile('back_ic'));
 
         if ($request->hasFile('back_ic')) {
             $back_ic = $staff->user_id . '_back_ic' . '.' . $request->file('back_ic')->extension();
@@ -66,13 +72,15 @@ class StaffController extends Controller {
     }
 
     // show function
-    public function show($id) {
+    public function show($id)
+    {
         $staff = Staff::find($id);
         return view('elove.staff.show', compact('staff'));
     }
 
     // accept function
-    public function accept($id) {
+    public function accept($id)
+    {
         $staff = Staff::find($id);
         $staff->is_approved = true;
 
@@ -84,7 +92,8 @@ class StaffController extends Controller {
     }
 
     // reject function
-    public function reject($id) {
+    public function reject($id)
+    {
         $staff = Staff::find($id);
         $staff->is_approved = false;
 
@@ -97,7 +106,8 @@ class StaffController extends Controller {
 
 
     // destroy function
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $staff = Staff::find($id);
 
         if ($staff->delete()) {

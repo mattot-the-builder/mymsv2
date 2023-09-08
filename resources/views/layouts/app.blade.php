@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="{{ asset('filepond/dist/filepond.css') }}">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -48,10 +50,34 @@
         </main>
     </div>
 
+
     @stack('modals')
 
     @livewireScripts
     <script src="{{ asset('assets/js/script.js') }}"></script>
+
+    <script src="{{ asset('filepond/dist/filepond.js') }}"></script>
+
+
+    <script>
+        const front_ic = document.querySelector('input[id="front_ic"]');
+        const back_ic = document.querySelector('input[id="back_ic"]');
+        const attachment = document.querySelector('input[id="attachment"]')
+        // Create a FilePond instance
+        const front_pond = FilePond.create(front_ic);
+        const back_pond = FilePond.create(back_ic);
+        const attachment_pond = FilePond.create(attachment);
+
+        FilePond.setOptions({
+            server: {
+                process: "/tmp-upload",
+                revert: "/tmp-delete",
+                headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                },
+            },
+        });
+    </script>
 </body>
 
 <footer class="bg-white dark:bg-gray-900 p-3">

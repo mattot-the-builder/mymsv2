@@ -5,6 +5,6 @@
         {{ $label }}
     </th>
     <td class="px-6 py-4">
-        <img class="h-25 max-w-full" src="{{ asset('storage/'.$value) }}" alt="{{ $value }}" />
+        <img class="object-cover h-48 w-96" src="{{ Storage::url('staff/ic/3/sample.png') }}" >
     </td>
 </tr>

@@ -24,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::view('/test', 'test');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

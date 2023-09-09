@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Exports\MileageClaimExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\TemporaryFile;
 
-
-class MileageClaimController extends Controller {
-
+class MileageClaimController extends Controller
+{
     //index function
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         if ($request->search) {
             $mileage_claims = MileageClaim::where('id', 'like', '%' . $request->search . '%')
                 ->sortable()->paginate(10);
@@ -27,30 +28,37 @@ class MileageClaimController extends Controller {
     }
 
     //export function
-    public function exportAsExcel() {
-        return Excel::download(new MileageClaimExport, 'mileage_claim.xlsx');
+    public function exportAsExcel()
+    {
+        return Excel::download(new MileageClaimExport(), 'mileage_claim.xlsx');
     }
 
     //show function
-    public function show($id) {
+    public function show($id)
+    {
         $mileage_claim = MileageClaim::find($id);
         return view('elove/mileage-claim/show', compact('mileage_claim'));
     }
 
     //create function
-    public function create() {
+    public function create()
+    {
         return view('elove/mileage-claim/create');
     }
 
     //store function
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $mileage_claim = new MileageClaim();
         $mileage_claim->fill($request->all());
 
-        if ($request->hasFile('attachment')) {
-            $attachment = Auth::user()->staff->id . '_attachment_' . time() . '.' . $request->file('attachment')->extension();
-            $attachment_path = $request->file('attachment')->storeAs('photos/staff/attachment/mileage_claim', $attachment, 'public');
-            $mileage_claim->attachment = $attachment_path;
+        $attachment = TemporaryFile::where('folder', $request->attachment)->first();
+
+        if ($attachment) {
+            Storage::copy('tmp/' . $attachment->folder . '/' . $attachment->file, 'public/attachment/mileage-claim/' .  $attachment->file);
+            $mileage_claim->attachment = 'public/attachment/mileage-claim/' . $attachment->file;
+            Storage::deleteDirectory('tmp/' . $attachment->folder);
+            $attachment->delete();
         }
 
         $mileage_claim->total_claim = $mileage_claim->fuel_cost;
@@ -63,7 +71,8 @@ class MileageClaimController extends Controller {
     }
 
     // accept function
-    public function accept($id) {
+    public function accept($id)
+    {
         $mileage_claim = MileageClaim::find($id);
         $mileage_claim->status = 'accepted';
 
@@ -75,7 +84,8 @@ class MileageClaimController extends Controller {
     }
 
     // reject function
-    public function reject($id) {
+    public function reject($id)
+    {
         $mileage_claim = MileageClaim::find($id);
         $mileage_claim->status = 'rejected';
 
@@ -87,7 +97,8 @@ class MileageClaimController extends Controller {
     }
 
     //delete function
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $mileage_claim = MileageClaim::find($id);
         if ($mileage_claim->delete()) {
             return redirect()->route('mileage-claim.index')->with('success', 'Mileage claim deleted successfully.');

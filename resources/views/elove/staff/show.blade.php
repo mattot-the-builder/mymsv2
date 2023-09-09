@@ -51,7 +51,8 @@
                         <x-show-item label="Vehicle Type" :value="$staff->vehicle_type" />
                         <x-show-item label="Vehicle Model" :value="$staff->vehicle_model" />
                         <x-show-item label="Status" :value="$staff->is_approved" />
-
+                        <x-show-image label="Front IC" :value="$staff->front_ic" />
+                        <x-show-image label="Back IC" :value="$staff->back_ic" />
                         <x-show-item label="Created at" :value="$staff->created_at->diffForHumans()" />
 
                     </tbody>

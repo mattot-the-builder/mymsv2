@@ -11,11 +11,13 @@ use Carbon\Carbon;
 use App\Models\LeaveRequest;
 use App\Exports\LeaveRequestExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\TemporaryFile;
 
-class LeaveRequestController extends Controller {
-
+class LeaveRequestController extends Controller
+{
     // index function
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         if ($request->search) {
             $leave_requests = LeaveRequest::where('id', 'like', '%' . $request->search . '%')
                 ->sortable()
@@ -28,17 +30,20 @@ class LeaveRequestController extends Controller {
     }
 
     // export function
-    public function exportAsExcel() {
-        return Excel::download(new LeaveRequestExport, 'leave_request.xlsx');
+    public function exportAsExcel()
+    {
+        return Excel::download(new LeaveRequestExport(), 'leave_request.xlsx');
     }
 
     // create function
-    public function create() {
+    public function create()
+    {
         return view('elove/leave-request/create');
     }
 
     // store function
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $start_date = Carbon::parse($request->start_date);
         $end_date = Carbon::parse($request->end_date);
 
@@ -48,10 +53,13 @@ class LeaveRequestController extends Controller {
         $leave_request->fill($request->all());
         $leave_request->total_leave = $total_leave;
 
-        if ($request->hasFile('attachment')) {
-            $attachment = Auth::user()->staff->id . '_attachment_' . time() . '.' . $request->file('attachment')->extension();
-            $attachment_path = $request->file('attachment')->storeAs('photos/staff/attachment/leave_request', $attachment, 'public');
-            $leave_request->attachment = $attachment_path;
+        $attachment = TemporaryFile::where('folder', $request->attachment)->first();
+
+        if ($attachment) {
+            Storage::copy('tmp/' . $attachment->folder . '/' . $attachment->file, 'public/attachment/leave-request/' .  $attachment->file);
+            $leave_request->attachment = 'public/attachment/leave-request/' . $attachment->file;
+            Storage::deleteDirectory('tmp/' . $attachment->folder);
+            $attachment->delete();
         }
 
         if (Auth::user()->staff->leaveRequests()->save($leave_request)) {
@@ -62,13 +70,15 @@ class LeaveRequestController extends Controller {
     }
 
     // show function
-    public function show($id) {
+    public function show($id)
+    {
         $leave_request = LeaveRequest::find($id);
         return view('elove/leave-request/show', compact('leave_request'));
     }
 
     // accept function
-    public function accept($id) {
+    public function accept($id)
+    {
         $leave_request = LeaveRequest::find($id);
         $leave_request->status = 'accepted';
 
@@ -80,7 +90,8 @@ class LeaveRequestController extends Controller {
     }
 
     // reject function
-    public function reject($id) {
+    public function reject($id)
+    {
         $leave_request = LeaveRequest::find($id);
         $leave_request->status = 'rejected';
 
@@ -92,7 +103,8 @@ class LeaveRequestController extends Controller {
     }
 
     // destroy function
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $leave_request = LeaveRequest::find($id);
         if ($leave_request->delete()) {
             return redirect()->route('leave-request.index')->with('success', 'Leave request deleted successfully.');

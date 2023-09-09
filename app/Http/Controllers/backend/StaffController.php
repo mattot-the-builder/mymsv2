@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\TemporaryFile;
 use App\Models\Staff;
 use App\Exports\StaffExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class StaffController extends Controller
 {
@@ -42,26 +44,28 @@ class StaffController extends Controller
 
     public function store(Request $request)
     {
-        // dd('remove this in store function');
-
+        // dd($request->all());
         $staff = new Staff();
         $staff->fill($request->all());
         $staff->user_id = Auth::user()->id;
+        $front_ic = TemporaryFile::where('folder', $request->front_ic)->first();
+        $back_ic = TemporaryFile::where('folder', $request->back_ic)->first();
 
-        // dd('file issue not settle');
 
-        if ($request->hasFile('front_ic')) {
-            $front_ic = $staff->user_id . '_front_ic' . '.' . $request->file('front_ic')->extension();
-            $front_ic_path = $request->file('front_ic')->storeAs('photos/staff/front_ic', $front_ic, 'public');
-            $staff->front_ic = $front_ic_path;
+        if ($front_ic) {
+            Storage::copy('tmp/' . $front_ic->folder . '/' . $front_ic->file, 'public/staff/ic/' . Auth::user()->id . '/' . $front_ic->file);
+            $staff->front_ic = 'staff/ic/' . Auth::user()->id . '/' . $front_ic->file;
+
+            Storage::deleteDirectory('tmp/' . $front_ic->folder);
+            $front_ic->delete();
         }
 
-        dd($request->hasFile('back_ic'));
+        if ($back_ic) {
+            Storage::copy('tmp/' . $back_ic->folder . '/' . $back_ic->file, 'public/staff/ic/' . Auth::user()->id . '/' . $back_ic->file);
+            $staff->back_ic = 'staff/ic/' . Auth::user()->id . '/' . $back_ic->file;
 
-        if ($request->hasFile('back_ic')) {
-            $back_ic = $staff->user_id . '_back_ic' . '.' . $request->file('back_ic')->extension();
-            $back_ic_path = $request->file('back_ic')->storeAs('photos/staff/back_ic', $back_ic, 'public');
-            $staff->back_ic = $back_ic_path;
+            Storage::deleteDirectory('tmp/' . $front_ic->folder);
+            $front_ic->delete();
         }
 
         if ($staff->save()) {

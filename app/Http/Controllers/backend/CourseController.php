@@ -33,24 +33,15 @@ class CourseController extends Controller {
         return view('backend/course/create');
     }
 
-    // public function store(Request $request) {
-    //     $course = new Course();
-    //     $course->name = $request->name;
-    //     $course->details = $request->details;
-
-    //     if ($course->save()) {
-    //         return redirect()->route('course.index')->with('success', 'Course created successfully');
-    //     } else {
-    //         return redirect()->route('course.index')->with('error', 'Course failed to create');
-    //     }
-    // }
-
-    // public function storeTest(Request $request) {
-    //     dd('store test function');
-    // }
     // export function
     public function exportAsExcel() {
         return Excel::download(new CourseExport, 'courses.xlsx');
+    }
+
+    // edit function
+    public function edit($id) {
+        $course = Course::findOrFail($id);
+        return view('backend.course.edit', compact('course'));
     }
 
     // destroy function

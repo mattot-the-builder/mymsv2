@@ -106,6 +106,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // Route::post('/course', [CourseController::class, 'store'])->name('course.store');
     Route::post('/course/{keyword?}', [CourseController::class, 'index'])->name('course.search');
     Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
+    Route::get('/course/edit/{id?}', [CourseController::class, 'edit'])->name('course.edit');
     Route::get('/course/export', [CourseController::class, 'exportAsExcel'])->name('course.export.excel');
     Route::get('/course/delete/{id?}', [CourseController::class, 'destroy'])->name('course.destroy');
 

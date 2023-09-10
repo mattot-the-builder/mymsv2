@@ -29,13 +29,47 @@ class CourseController extends Controller {
         return view('backend/course/index', compact('courses', 'items'));
     }
 
+    // create function
     public function create() {
         return view('backend/course/create');
+    }
+
+    public function store(Request $request) {
+        $course = new Course();
+        $course->name = $request->name;
+        $course->contents = $request->contents;
+        $course->date = $request->date;
+        $course->started_at = $request->started_at;
+        $course->ended_at = $request->ended_at;
+        $course->fee = $request->fee;
+
+        if ($course->save()) {
+            return redirect()->route('course.index')->with('success', 'Course created successfully');
+        } else {
+            return redirect()->route('course.index')->with('error', 'Course failed to create');
+        }
     }
 
     // export function
     public function exportAsExcel() {
         return Excel::download(new CourseExport, 'courses.xlsx');
+    }
+
+    // update function
+    public function update(Request $request) {
+        $course = Course::findOrFail($request->id);
+        $course->name = $request->name;
+        $course->contents = $request->contents;
+        $course->date = $request->date;
+        $course->started_at = $request->started_at;
+        $course->ended_at = $request->ended_at;
+        $course->fee = $request->fee;
+
+        if ($course->save()) {
+            return redirect()->route('course.index')->with('success', 'Course updated successfully');
+        } else {
+            return redirect()->route('course.index')->with('error', 'Course failed to update');
+        }
     }
 
     // edit function

@@ -607,12 +607,18 @@
                             In collaboration with:
                         </h2>
                         <div
-                            class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
+                            class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-4 lg:grid-cols-4 dark:text-gray-400">
                             <a href="#" class="flex justify-center items-center">
-                                <img src="{{ asset('assets/img/logo/hrdf.svg') }}" alt="">
+                                <img src="{{ asset('assets/img/logo/hrdf.svg') }}" alt=""
+                                    class="flex dark:hidden">
+                                <img src="{{ asset('assets/img/logo/hrdf-dark.svg') }}" alt=""
+                                    class="hidden dark:flex">
                             </a>
                             <a href="#" class="flex justify-center items-center">
-                                <img src="{{ asset('assets/img/logo/mbot.svg') }}" alt="">
+                                <img src="{{ asset('assets/img/logo/mbot.svg') }}" alt=""
+                                    class="flex dark:hidden">
+                                <img src="{{ asset('assets/img/logo/mbot-dark.svg') }}" alt=""
+                                    class="hidden dark:flex">
                             </a>
                             <a href="#" class="flex justify-center items-center">
                                 <img src="{{ asset('assets/img/logo/tnb.svg') }}" alt="">

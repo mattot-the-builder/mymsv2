@@ -1,9 +1,20 @@
 # Important
+User can register multiple person
 send invoice
-soft delete, bcs now have error when deleting
-photo not opening on server
 setup role and permission
+
+add new table
+invoice
+receipt
+
+invoice
+id (invoice number)
+user
+course (json store id)
+
+register -> invoice page -> payment -> receipt
 
 
 # Optional
 on medium size, profile options at right top not become truncated in y direction
+    - maybe use dropdown to show elove menu, so no menu truncated on md size

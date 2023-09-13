@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/test', [StudentRegistrationController::class, 'invoiceTest']);
+Route::view('/invoice', 'backend.student-registration.invoice');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
@@ -97,8 +98,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     // student registration
     Route::get('/registration', [StudentRegistrationController::class, 'index'])->name('student-registration.index');
+    Route::post('/registration', [StudentRegistrationController::class, 'store'])->name('student-registration.store');
     Route::get('/register-programme', [StudentRegistrationController::class, 'create'])->name('student-registration.create');
-    Route::post('/checkout', [StudentRegistrationController::class, 'checkout'])->name('student-registration.checkout');
+    Route::get('/checkout/{id?}', [StudentRegistrationController::class, 'checkout'])->name('student-registration.checkout');
     Route::get('/register-programme/success', [StudentRegistrationController::class, 'success'])->name('success');
 
     // course

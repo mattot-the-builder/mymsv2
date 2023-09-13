@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
-class StudentRegistration extends Model {
+class StudentRegistration extends Model
+{
     use HasFactory;
     use Sortable;
 
@@ -19,15 +20,23 @@ class StudentRegistration extends Model {
 
     public $sortable = ['id', 'user_id', 'created_at', 'updated_at'];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function course() {
+    public function course()
+    {
         return $this->belongsTo(Course::class);
     }
 
-    public function payment() {
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function payment()
+    {
         return $this->hasOne(Payment::class);
     }
 }

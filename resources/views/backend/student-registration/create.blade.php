@@ -7,13 +7,14 @@
 
     <div class="py-12 ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-alert />
 
             <div
                 class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6 text-gray-500 dark:text-gray-400">
                 <h2 class="mb-6 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     Register New Course
                 </h2>
-                <form action="{{ route('student-registration.checkout') }}" method="POST">
+                <form action="{{ route('student-registration.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -100,12 +101,13 @@
 
                     @livewire('course-list')
 
+                    <x-reset-button />
+
+                    {{-- <button type="submit" --}}
+                    {{--     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Proceed --}}
+                    {{--     to Payment</button> --}}
 
                     <button type="submit"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Proceed
-                        to Payment</button>
-
-                    <button type="button"
                         class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Register</button>
                 </form>
             </div>

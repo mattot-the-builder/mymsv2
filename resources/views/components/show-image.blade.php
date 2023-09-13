@@ -5,6 +5,6 @@
         {{ $label }}
     </th>
     <td class="px-6 py-4">
-        <img class="object-cover h-48 w-96" src="{{ Storage::url('staff/ic/3/sample.png') }}" >
+        <img class="object-cover h-48 w-96" src="{{ Storage::url($value) }}">
     </td>
 </tr>

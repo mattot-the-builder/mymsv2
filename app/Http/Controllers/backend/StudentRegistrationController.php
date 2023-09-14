@@ -92,7 +92,7 @@ class StudentRegistrationController extends Controller
 
                 $invoice_mail = new AppInvoice(compact('invoice_data'));
 
-                Mail::to('matott@receive.com')->send($invoice_mail);
+                Mail::to(Auth::user()->email)->send($invoice_mail);
 
                 return view('backend.student-registration.invoice', compact('invoice'))->with('success', 'Registered successfully');
             }
@@ -211,7 +211,7 @@ class StudentRegistrationController extends Controller
 
         $receipt_mail = new Receipt(compact('invoice_data'));
 
-        Mail::to('matott@receive.com')->send($receipt_mail);
+        Mail::to(Auth::user()->email)->send($receipt_mail);
 
         if ($student_registration->save()) {
             return view('backend.student-registration.receipt', compact('session', 'invoice'));

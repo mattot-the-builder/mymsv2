@@ -46,31 +46,179 @@
             @endif
 
             <!-- <img src="{{ asset('assets/img/hero.jpg') }}" alt="test image"> -->
-            <section class="background-radial-gradient pt-16 pb-12 text-center lg:text-left">
-                <div class="relative overflow-hidden bg-cover bg-no-repeat bg-[50%] h-[500px]"
-                    style="background-image: url('{{ asset('assets/img/hero.jpg') }}')">
-                    <div
-                        class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
-                        <div class="flex h-full items-center justify-center">
-                            <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
-                                <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
-                                    class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
-                                    Unlocking Possibilities
-                                </h2>
-                                <p class="text-xl text-semibold" id="typing-text">
-                                </p>
-                                <div class="mt-12">
-                                    <a href="{{ route('register') }}"
-                                        class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
-                                        Started</a>
-                                </div>
-                            </div>
 
+
+            <section id="default-carousel" class="relative w-full pt-16" data-carousel="slide">
+                <!-- Carousel wrapper -->
+                <div class="relative h-56 overflow-hidden md:h-96 z-0">
+
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('assets/img/hero.jpg') }}"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                            alt="...">
+                        <div
+                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
+                            <div class="flex h-full items-center justify-center">
+                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
+                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
+                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
+                                        Unlocking Possibilities
+                                    </h2>
+                                    <p class="text-xl text-semibold" id="typing-text">
+                                    </p>
+                                    <div class="mt-12">
+                                        <a href="{{ route('register') }}"
+                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('assets/img/hero.jpg') }}"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                            alt="...">
+                        <div
+                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
+                            <div class="flex h-full items-center justify-center">
+                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
+                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
+                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
+                                        Third slide
+                                    </h2>
+                                    <p class="text-xl text-semibold" id="typing-text">
+                                    </p>
+                                    <div class="mt-12">
+                                        <a href="{{ route('register') }}"
+                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('assets/img/hero.jpg') }}"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                            alt="...">
+                        <div
+                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
+                            <div class="flex h-full items-center justify-center">
+                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
+                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
+                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
+                                        Third slide
+                                    </h2>
+                                    <p class="text-xl text-semibold" id="typing-text">
+                                    </p>
+                                    <div class="mt-12">
+                                        <a href="{{ route('register') }}"
+                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('assets/img/hero.jpg') }}"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                            alt="...">
+                        <div
+                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
+                            <div class="flex h-full items-center justify-center">
+                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
+                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
+                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
+                                        Fourth slide
+                                    </h2>
+                                    <p class="text-xl text-semibold" id="typing-text">
+                                    </p>
+                                    <div class="mt-12">
+                                        <a href="{{ route('register') }}"
+                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('assets/img/hero.jpg') }}"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                            alt="...">
+                        <div
+                            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed">
+                            <div class="flex h-full items-center justify-center">
+                                <div class="max-w-[800px] px-6 py-6 text-center text-white md:py-0 md:px-12">
+                                    <h2 data-aos="zoom-fade-in" data-aos-duration="3000"
+                                        class="mb-12 text-5xl font-bold leading-tight tracking-tight md:text-6xl xl:text-7xl">
+                                        Fifth slide
+                                    </h2>
+                                    <p class="text-xl text-semibold" id="typing-text">
+                                    </p>
+                                    <div class="mt-12">
+                                        <a href="{{ route('register') }}"
+                                            class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Get
+                                            Started</a>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- Slider indicators -->
+                <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                        data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                        data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                        data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                        data-carousel-slide-to="3"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
+                        data-carousel-slide-to="4"></button>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-prev>
+                    <span
+                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="M5 1 1 5l4 4" />
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button"
+                    class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-next>
+                    <span
+                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 9 4-4-4-4" />
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
             </section>
-
 
             <!-- Page Content -->
             <main class="p-6 mx-auto md:px-6">
@@ -89,11 +237,14 @@
                                 landscapes
                                 of challenges and possibilities with resilience. Just as a masterful conductor
                                 harmonizes an
-                                orchestra, we orchestrate the symphony of intricate engineering intricacies to compose
+                                orchestra, we orchestrate the symphony of intricate engineering intricacies to
+                                compose
                                 solutions that resonate with brilliance. Guided by a visionary compass, we transcend
-                                traditional boundaries and engineer new horizons. With meticulous attention to detail
+                                traditional boundaries and engineer new horizons. With meticulous attention to
+                                detail
                                 and a
-                                deep-seated passion, we craft a narrative of innovation, where each chapter unfolds with
+                                deep-seated passion, we craft a narrative of innovation, where each chapter unfolds
+                                with
                                 transformative breakthroughs.
                             </p>
                         </div>
@@ -113,10 +264,12 @@
 
 
                             </div>
-                            <h5 class="mb-4 text-lg font-bold text-red-600 dark:text-red-600">Unparalleled Expertise
+                            <h5 class="mb-4 text-lg font-bold text-red-600 dark:text-red-600">Unparalleled
+                                Expertise
                             </h5>
                             <p class="text-gray-500 dark:text-gray-400">
-                                Our seasoned engineers bring decades of expertise for top-tier solutions and training.
+                                Our seasoned engineers bring decades of expertise for top-tier solutions and
+                                training.
                             </p>
                         </div>
 
@@ -200,9 +353,11 @@
                                             Engineering
                                         </h2>
                                         <p class="mb-8 pb-2 lg:pb-0 text-gray-500 dark:text-gray-400">
-                                            Explore our comprehensive range of electrical engineering services, designed
+                                            Explore our comprehensive range of electrical engineering services,
+                                            designed
                                             to
-                                            meet the diverse needs of the public sector. From innovative infrastructure
+                                            meet the diverse needs of the public sector. From innovative
+                                            infrastructure
                                             solutions to cutting-edge energy optimization, we deliver excellence in
                                             every
                                             project.
@@ -248,9 +403,11 @@
                                         <h2 class=" mb-8 text-3xl font-bold text-red-600">Academy
                                         </h2>
                                         <p class="mb-8 pb-2 lg:pb-0 text-gray-500 dark:text-gray-400">
-                                            Empower your team with our specialized academy offerings tailored for the
+                                            Empower your team with our specialized academy offerings tailored for
+                                            the
                                             public
-                                            sector. Our curriculum blends theoretical knowledge with practical insights,
+                                            sector. Our curriculum blends theoretical knowledge with practical
+                                            insights,
                                             equipping professionals with the skills needed to thrive in dynamic
                                             governmental
                                             environments.
@@ -311,9 +468,12 @@
                                         Experience
                                     </h2>
                                     <p class="mb-12 text-neutral-500 dark:text-neutral-300">
-                                        Whether you're seeking top-tier Electrical Engineering Services or an enriching
-                                        learning experience through our Academy, we're dedicated to your success. Our
-                                        seasoned team brings innovation to projects, while our dynamic courses equip you
+                                        Whether you're seeking top-tier Electrical Engineering Services or an
+                                        enriching
+                                        learning experience through our Academy, we're dedicated to your success.
+                                        Our
+                                        seasoned team brings innovation to projects, while our dynamic courses equip
+                                        you
                                         with practical skills and insights for excellence in your chosen field.
                                     </p>
 
@@ -566,7 +726,8 @@
                                         <h5 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
                                             Muhammad Irfan Bin Rohaizad
                                         </h5>
-                                        <p class="mb-4 text-neutral-500 dark:text-neutral-300">Training Engineer</p>
+                                        <p class="mb-4 text-neutral-500 dark:text-neutral-300">Training Engineer
+                                        </p>
                                         <ul class="mx-auto flex list-inside justify-center lg:justify-start">
                                             <a href="#!" class="px-2">
                                                 <!-- GitHub -->

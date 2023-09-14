@@ -13,12 +13,19 @@ class StudentRegistration extends Model
 
     protected $fillable = [
         'user_id',
+        'name',
+        'ic_number',
         'contact',
+        'company_name',
+        'address',
+        'is_sponsored',
+        'competency',
+        'position',
         'course_id',
         'status',
     ];
 
-    public $sortable = ['id', 'user_id', 'created_at', 'updated_at'];
+    public $sortable = ['id', 'name', 'created_at', 'updated_at'];
 
     public function user()
     {

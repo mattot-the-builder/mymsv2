@@ -56,6 +56,7 @@ class StudentRegistrationController extends Controller
     {
         $student_registration = new StudentRegistration();
         $student_registration->user_id = Auth::user()->id;
+        $student_registration->name = $request->name;
         $student_registration->ic_number = $request->ic_number;
         $student_registration->contact = $request->contact;
         $student_registration->company_name = $request->company_name;
@@ -82,7 +83,7 @@ class StudentRegistrationController extends Controller
         }
     }
 
-    public function checkout($id)
+    public function checkout($id, Request $request)
     {
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $invoice = Invoice::findOrfail($id);
@@ -104,7 +105,7 @@ class StudentRegistrationController extends Controller
             'client_reference_id' => $invoice->id,
             'mode' => 'payment',
             'success_url' => env('APP_URL') . '/register-programme/success?session_id={CHECKOUT_SESSION_ID}&contact=' . $invoice->studentRegistration->contact,
-            'payment_method_types' => ['card'],
+            'payment_method_types' => [$request->payment_method],
         ]);
 
         return redirect()->away($session->url);

@@ -19,7 +19,7 @@
                             <h1 class="text-lg font-bold">Receipt</h1>
                             <div class="text-gray-700">
                                 <div>Date: {{ $invoice->created_at->format('d-m-Y') }}</div>
-                                <div>Invoice #: e/{{ $invoice->id }}</div>
+                                <div>Receipt No: MYMS/R/E/ {{ $invoice->id }}</div>
                             </div>
                         </div>
                         <div class="mb-8">

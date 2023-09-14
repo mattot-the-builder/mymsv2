@@ -1,18 +1,6 @@
 # Important
-User can register multiple person
-send invoice
+send invoice - email
 setup role and permission
-
-add new table
-invoice
-receipt
-
-invoice
-id (invoice number)
-user
-course (json store id)
-
-register -> invoice page -> payment -> receipt
 
 
 # Optional

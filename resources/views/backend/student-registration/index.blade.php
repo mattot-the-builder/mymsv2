@@ -35,7 +35,7 @@
                             <th scope="col" class="px-6 py-3">
                                 <div class="flex justify-start">
 
-                                    @sortablelink('user')
+                                    @sortablelink('name')
 
                                     <svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="currentColor" viewBox="0 0 24 24">
@@ -94,27 +94,27 @@
                         <tbody>
 
                             @foreach ($student_registrations as $student_registration)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $student_registration->id }}
-                                </th>
-                                <td class="px-6 py-4">
-                                    {{ $student_registration->user->name }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $student_registration->course->name }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $student_registration->contact }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $student_registration->created_at }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $student_registration->updated_at->diffForHumans() }}
-                                </td>
-                            </tr>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $student_registration->id }}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ $student_registration->name }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $student_registration->course->name }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $student_registration->contact }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $student_registration->created_at }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $student_registration->updated_at->diffForHumans() }}
+                                    </td>
+                                </tr>
                             @endforeach
 
 
@@ -125,13 +125,12 @@
                     <div class="relative overflow-x-auto flex flex-wrap justify-between">
                         <div class="m-4">
                             <span class="text-sm text-gray-700 dark:text-gray-400">
-                                Showing <span class="font-semibold text-gray-900 dark:text-white">{{
-                                    $student_registrations->firstItem()
-                                    }}</span> to <span class="font-semibold text-gray-900 dark:text-white">{{
-                                    $student_registrations->lastItem() }}</span> of <span
-                                    class="font-semibold text-gray-900 dark:text-white">{{
-                                    $student_registrations->total()
-                                    }}</span>
+                                Showing <span
+                                    class="font-semibold text-gray-900 dark:text-white">{{ $student_registrations->firstItem() }}</span>
+                                to <span
+                                    class="font-semibold text-gray-900 dark:text-white">{{ $student_registrations->lastItem() }}</span>
+                                of <span
+                                    class="font-semibold text-gray-900 dark:text-white">{{ $student_registrations->total() }}</span>
                                 Entries
                             </span>
                         </div>
@@ -152,23 +151,24 @@
                                     </li>
 
 
-                                    @for ($page = 1; $page <= $student_registrations->lastPage(); $page++) <li>
-                                            <a href="{{ url()->current() .'?page='. $page }}"
+                                    @for ($page = 1; $page <= $student_registrations->lastPage(); $page++)
+                                        <li>
+                                            <a href="{{ url()->current() . '?page=' . $page }}"
                                                 class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                                 {{ $page }}
                                             </a>
                                         </li>
-                                        @endfor
-                                        <li>
-                                            <a href="{{ $student_registrations->nextPageUrl()  }}"
-                                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next
-                                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                                </svg></a>
-                                        </li>
+                                    @endfor
+                                    <li>
+                                        <a href="{{ $student_registrations->nextPageUrl() }}"
+                                            class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next
+                                            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                            </svg></a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

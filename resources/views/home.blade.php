@@ -45,10 +45,7 @@
                 </header>
             @endif
 
-            <!-- <img src="{{ asset('assets/img/hero.jpg') }}" alt="test image"> -->
-
-
-            <section id="default-carousel" class="relative w-full pt-16" data-carousel="slide">
+            <section id="default-carousel" class="relative w-full mt-16" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden md:h-96 z-0">
 

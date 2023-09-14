@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\ExpenseClaimController;
 use App\Http\Controllers\backend\MileageClaimController;
@@ -10,7 +11,9 @@ use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\StaffController;
 use App\Http\Controllers\backend\StudentRegistrationController;
 use App\Http\Controllers\HomeController;
+use App\Mail\Invoice;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +30,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', [StudentRegistrationController::class, 'invoiceTest']);
 Route::view('/invoice', 'backend.student-registration.invoice');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/send-invoice/{name?}', function ($name) {
+    $invoice = new Invoice($name);
+    return $invoice->render();
+})->name('email.invoice');
+
+Route::get('/send-receipt/{id?}', [EmailController::class, 'receipt'])->name('email.receipt');
+
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
@@ -115,4 +126,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::post('/tmp-upload', [FileUploadController::class, 'tmpUpload']);
     Route::delete('/tmp-delete', [FileUploadController::class, 'tmpDelete']);
+
 });

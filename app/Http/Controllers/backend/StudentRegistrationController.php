@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Mail\Invoice as AppInvoice;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
@@ -10,10 +11,12 @@ use App\Models\Course;
 use App\Models\StudentRegistration;
 use App\Models\Invoice;
 use App\Exports\StudentRegistrationExport;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 // use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
+use App\Mail\Receipt;
 
 class StudentRegistrationController extends Controller
 {
@@ -76,6 +79,21 @@ class StudentRegistrationController extends Controller
             $invoice->student_registration_id = $student_registration->id;
 
             if ($invoice->save()) {
+
+                $invoice_data = [
+                    'id' => $invoice->id,
+                    'date' => $invoice->created_at,
+                    'user_name' => $invoice->user->name,
+                    'user_address' => $invoice->studentRegistration->address,
+                    'course_name' => $invoice->studentRegistration->course->name,
+                    'fee' => $invoice->studentRegistration->course->fee,
+                    'user_id' => $invoice->user_id
+                ];
+
+                $invoice_mail = new AppInvoice(compact('invoice_data'));
+
+                Mail::to('matott@receive.com')->send($invoice_mail);
+
                 return view('backend.student-registration.invoice', compact('invoice'))->with('success', 'Registered successfully');
             }
         } else {
@@ -179,6 +197,21 @@ class StudentRegistrationController extends Controller
         $student_registration = Auth::user()->studentRegistrations->last();
         $student_registration->payment_id = $session->id;
         $invoice = Invoice::where('student_registration_id', '=', $student_registration->id)->first();
+
+        $invoice_data = [
+            'id' => $invoice->id,
+            'date' => $invoice->created_at,
+            'user_name' => $invoice->user->name,
+            'user_address' => $invoice->studentRegistration->address,
+            'course_name' => $invoice->studentRegistration->course->name,
+            'fee' => $invoice->studentRegistration->course->fee,
+            'payment_method' => $session->payment_method_types[0],
+            'user_id' => $invoice->user_id
+        ];
+
+        $receipt_mail = new Receipt(compact('invoice_data'));
+
+        Mail::to('matott@receive.com')->send($receipt_mail);
 
         if ($student_registration->save()) {
             return view('backend.student-registration.receipt', compact('session', 'invoice'));

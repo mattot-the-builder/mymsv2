@@ -47,10 +47,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         return view('dashboard');
     })->name('dashboard');
 
-
-
     // student registration
-    Route::get('/registration', [StudentRegistrationController::class, 'index'])->name('student-registration.index');
     Route::post('/registration', [StudentRegistrationController::class, 'store'])->name('student-registration.store');
     Route::get('/register-programme', [StudentRegistrationController::class, 'create'])->name('student-registration.create');
     Route::post('/checkout/{id?}', [StudentRegistrationController::class, 'checkout'])->name('student-registration.checkout');
@@ -59,11 +56,20 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('/tmp-upload', [FileUploadController::class, 'tmpUpload']);
     Route::delete('/tmp-delete', [FileUploadController::class, 'tmpDelete']);
 
-    Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
     Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
-    Route::get('/staff/{id?}', [StaffController::class, 'show'])->name('staff.show');
+    Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
 
     Route::group(['middleware' => 'role:admin'], function () {
+
+        Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+        Route::post('/staff/{keyword?}', [StaffController::class, 'index'])->name('staff.search');
+        Route::get('/staff/export', [StaffController::class, 'exportAsExcel'])->name('staff.export.excel');
+        Route::get('/staff/accept/{id?}', [StaffController::class, 'accept'])->name('staff.accept');
+        Route::get('/staff/reject/{id?}', [StaffController::class, 'reject'])->name('staff.reject');
+        Route::get('/staff/delete/{id?}', [StaffController::class, 'destroy'])->name('staff.destroy');
+        Route::get('/staff/{id?}', [StaffController::class, 'show'])->name('staff.show');
+
+        Route::get('/registration', [StudentRegistrationController::class, 'index'])->name('student-registration.index');
         // user
         Route::get('/user', [UserController::class, 'index'])->name('user.index');
         Route::post('/user/{keyword?}', [UserController::class, 'index'])->name('user.search');
@@ -84,12 +90,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::group(['middleware' => 'role:staff,admin'], function () {
         // staff
-        Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
-        Route::post('/staff/{keyword?}', [StaffController::class, 'index'])->name('staff.search');
-        Route::get('/staff/export', [StaffController::class, 'exportAsExcel'])->name('staff.export.excel');
-        Route::get('/staff/accept/{id?}', [StaffController::class, 'accept'])->name('staff.accept');
-        Route::get('/staff/reject/{id?}', [StaffController::class, 'reject'])->name('staff.reject');
-        Route::get('/staff/delete/{id?}', [StaffController::class, 'destroy'])->name('staff.destroy');
 
         // expense claim
         Route::get('/expense-claim', [ExpenseClaimController::class, 'index'])->name('expense-claim.index');

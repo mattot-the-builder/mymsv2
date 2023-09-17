@@ -12,7 +12,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Kyslik\ColumnSortable\Sortable;
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -23,7 +22,6 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use Sortable;
-    use HasRoles;
     use MustVerifyEmail;
     use SoftDeletes;
 

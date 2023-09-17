@@ -1,5 +1,4 @@
 # Important
-send invoice - email
 setup role and permission
 
 

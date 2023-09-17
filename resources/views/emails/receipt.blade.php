@@ -8,7 +8,8 @@ Invoice No: MYMS/IN/R/{{ $invoice["invoice_data"]['id'] }}
 
 
 ## Bill To
-{{ $invoice['invoice_data']['user_name'] }}
+{{ $invoice['invoice_data']['user_name'] }} <br>
+{{ $invoice['invoice_data']['user_address'] }}
 
 <x-mail::table>
 | Description | Amount

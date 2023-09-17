@@ -17,13 +17,28 @@ class MileageClaimController extends Controller
     //index function
     public function index(Request $request)
     {
-        if ($request->search) {
-            $mileage_claims = MileageClaim::where('id', 'like', '%' . $request->search . '%')
+        if (Auth::user()->role === 'admin') {
+
+            if ($request->search) {
+                $mileage_claims = MileageClaim::where('id', 'like', '%' . $request->search . '%')
+                    ->sortable()->paginate(10);
+                return view('elove.mileage-claim.index', compact('mileage_claims'));
+            }
+            $mileage_claims = MileageClaim::latest()
                 ->sortable()->paginate(10);
-            return view('elove.mileage-claim.index', compact('mileage_claims'));
+
+        } elseif (Auth::user()->role === 'staff') {
+
+            if ($request->search) {
+                $mileage_claims = Auth::user()->staff->mileage_claims->where('id', 'like', '%' . $request->search . '%')
+                    ->sortable()->paginate(10);
+                return view('elove.mileage-claim.index', compact('mileage_claims'));
+            }
+            $mileage_claims = MileageClaim::where('staff_id', '=', Auth::user()->staff->id)
+                ->latest()
+                ->sortable()->paginate(10);
+
         }
-        $mileage_claims = MileageClaim::latest()
-            ->sortable()->paginate(10);
         return view('elove/mileage-claim/index', compact('mileage_claims'));
     }
 

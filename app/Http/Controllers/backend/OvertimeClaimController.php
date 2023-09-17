@@ -9,40 +9,63 @@ use App\Models\OvertimeClaim;
 use App\Models\OvertimeItem;
 
 use App\Exports\OvertimeClaimExport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
-class OvertimeClaimController extends Controller {
+class OvertimeClaimController extends Controller
+{
     // index function
-    public function index(Request $request) {
-        if ($request->search) {
-            $overtime_claims = OvertimeClaim::where('id', 'like', '%' . $request->search . '%')
-                ->sortable()
-                ->paginate(10);
-            return view('elove.overtime-claim.index', compact('overtime_claims'));
+    public function index(Request $request)
+    {
+        if (Auth::user()->role === 'admin') {
+
+            if ($request->search) {
+                $overtime_claims = OvertimeClaim::where('id', 'like', '%' . $request->search . '%')
+                    ->sortable()
+                    ->paginate(10);
+                return view('elove.overtime-claim.index', compact('overtime_claims'));
+            }
+            $overtime_claims = OvertimeClaim::latest()
+                ->sortable()->paginate(10);
+
+        } elseif (Auth::user()->role === 'staff') {
+
+            if ($request->search) {
+                $overtime_claims = Auth::user()->staff->overtime_claims->where('id', 'like', '%' . $request->search . '%')
+                    ->sortable()
+                    ->paginate(10);
+                return view('elove.overtime-claim.index', compact('overtime_claims'));
+            }
+            $overtime_claims = OvertimeClaim::where('staff_id', '=', Auth::user()->staff->id)
+                ->latest()
+                ->sortable()->paginate(10);
+
         }
-        $overtime_claims = OvertimeClaim::latest()
-            ->sortable()->paginate(10);
         return view('elove/overtime-claim/index', compact('overtime_claims'));
     }
 
     // export function
-    public function exportAsExcel() {
-        return Excel::download(new OvertimeClaimExport, 'overtime_claim.xlsx');
+    public function exportAsExcel()
+    {
+        return Excel::download(new OvertimeClaimExport(), 'overtime_claim.xlsx');
     }
 
     // create function
-    public function create() {
+    public function create()
+    {
         return view('elove/overtime-claim/create');
     }
 
     // show function
-    public function show($id) {
+    public function show($id)
+    {
         $overtime_claim = OvertimeClaim::find($id);
         return view('elove/overtime-claim/show', compact('overtime_claim'));
     }
 
     // accept function
-    public function accept($id) {
+    public function accept($id)
+    {
         $overtime_claim = OvertimeClaim::find($id);
         $overtime_claim->status = 'accepted';
 
@@ -54,7 +77,8 @@ class OvertimeClaimController extends Controller {
     }
 
     // reject function
-    public function reject($id) {
+    public function reject($id)
+    {
         $overtime_claim = OvertimeClaim::find($id);
         $overtime_claim->status = 'rejected';
 
@@ -66,7 +90,8 @@ class OvertimeClaimController extends Controller {
     }
 
     // destroy function
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $overtime_claim = OvertimeClaim::find($id);
 
         if ($overtime_claim->delete()) {

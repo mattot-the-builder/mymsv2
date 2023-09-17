@@ -12,39 +12,58 @@ use Illuminate\Http\Request;
 use App\Exports\ExpenseClaimExport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ExpenseClaimController extends Controller {
-
+class ExpenseClaimController extends Controller
+{
     // index function
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
+        // dd(Auth::user());
 
-        if ($request->search) {
-            $expense_claims = ExpenseClaim::where('id', 'like', '%' . $request->search . '%')
+        if (Auth::user()->role === 'admin') {
+            if ($request->search) {
+                $expense_claims = ExpenseClaim::where('id', 'like', '%' . $request->search . '%')
+                    ->sortable()->paginate(10);
+                return view('elove.expense-claim.index', compact('expense_claims'));
+            }
+            $expense_claims = ExpenseClaim::latest()
                 ->sortable()->paginate(10);
-            return view('elove.expense-claim.index', compact('expense_claims'));
+        } elseif (Auth::user()->role === 'staff') {
+
+            if ($request->search) {
+                $expense_claims = ExpenseClaim::where('id', 'like', '%' . $request->search . '%')
+                    ->where('staff_id', '=', Auth::user()->staff->id)
+                    ->sortable()->paginate(10);
+                return view('elove.expense-claim.index', compact('expense_claims'));
+            }
+            $expense_claims = ExpenseClaim::where('staff_id', '=', Auth::user()->staff->id)->latest()
+                ->sortable()->paginate(10);
         }
-        $expense_claims = ExpenseClaim::latest()
-            ->sortable()->paginate(10);
+
         return view('elove/expense-claim/index', compact('expense_claims'));
     }
 
     // export function
-    public function exportAsExcel() {
-        return Excel::download(new ExpenseClaimExport, 'expense_claim.xlsx');
+    public function exportAsExcel()
+    {
+        return Excel::download(new ExpenseClaimExport(), 'expense_claim.xlsx');
     }
 
     // create function
-    public function create() {
+    public function create()
+    {
         return view('elove/expense-claim/create');
     }
 
     //show function
-    public function show($id) {
+    public function show($id)
+    {
         $expense_claim = ExpenseClaim::find($id);
         return view('elove/expense-claim/show', compact('expense_claim'));
     }
 
     // accept function
-    public function accept($id) {
+    public function accept($id)
+    {
         $expense_claim = ExpenseClaim::find($id);
         $expense_claim->status = 'accepted';
         if ($expense_claim->save()) {
@@ -55,7 +74,8 @@ class ExpenseClaimController extends Controller {
     }
 
     // reject function
-    public function reject($id) {
+    public function reject($id)
+    {
         $expense_claim = ExpenseClaim::find($id);
         $expense_claim->status = 'rejected';
         if ($expense_claim->save()) {
@@ -66,7 +86,8 @@ class ExpenseClaimController extends Controller {
     }
 
     //delete function
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $expense_claim = ExpenseClaim::find($id);
         if ($expense_claim->delete()) {
             return redirect()->route('expense-claim.index')->with('success', 'Expense claim deleted successfully.');

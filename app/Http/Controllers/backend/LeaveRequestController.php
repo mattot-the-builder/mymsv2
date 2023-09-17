@@ -18,14 +18,30 @@ class LeaveRequestController extends Controller
     // index function
     public function index(Request $request)
     {
-        if ($request->search) {
-            $leave_requests = LeaveRequest::where('id', 'like', '%' . $request->search . '%')
-                ->sortable()
-                ->paginate(10);
-            return view('elove.leave-request.index', compact('leave_requests'));
+        if (Auth::user()->role === 'admin') {
+
+            if ($request->search) {
+                $leave_requests = LeaveRequest::where('id', 'like', '%' . $request->search . '%')
+                    ->sortable()
+                    ->paginate(10);
+                return view('elove.leave-request.index', compact('leave_requests'));
+            }
+            $leave_requests = LeaveRequest::latest()
+                ->sortable()->paginate(10);
+
+        } elseif (Auth::user()->role === 'staff') {
+
+            if ($request->search) {
+                $leave_requests = Auth::user()->staff->leave_requests->where('id', 'like', '%' . $request->search . '%')
+                    ->sortable()
+                    ->paginate(10);
+                return view('elove.leave-request.index', compact('leave_requests'));
+            }
+            $leave_requests = LeaveRequest::where('staff_id', '=', Auth::user()->staff->id)
+                ->latest()
+                ->sortable()->paginate(10);
+
         }
-        $leave_requests = LeaveRequest::latest()
-            ->sortable()->paginate(10);
         return view('elove/leave-request/index', compact('leave_requests'));
     }
 

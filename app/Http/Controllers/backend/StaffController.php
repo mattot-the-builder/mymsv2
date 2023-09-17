@@ -87,6 +87,8 @@ class StaffController extends Controller
     {
         $staff = Staff::find($id);
         $staff->is_approved = true;
+        $staff->user->role = 'staff';
+        $staff->user->save();
 
         if ($staff->save()) {
             return redirect()->route('staff.index')->with('success', 'Staff accepted successfully');
@@ -100,6 +102,8 @@ class StaffController extends Controller
     {
         $staff = Staff::find($id);
         $staff->is_approved = false;
+        $staff->user->role = 'user';
+        $staff->user->save();
 
         if ($staff->save()) {
             return redirect()->route('staff.index')->with('success', 'Staff rejected successfully');

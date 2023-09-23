@@ -1,7 +1,0 @@
-# Important
-setup role and permission
-
-
-# Optional
-on medium size, profile options at right top not become truncated in y direction
-    - maybe use dropdown to show elove menu, so no menu truncated on md size

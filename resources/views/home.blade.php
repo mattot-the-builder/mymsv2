@@ -503,7 +503,7 @@
                                         </div>
                                         <div>
                                             <img class="object-cover h-48 w-96 rounded-lg"
-                                                src="assets/img/experience4.jpg" alt="image description">
+                                                src="assets/img/experience3.jpg" alt="image description">
                                             <figcaption
                                                 class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
                                                 Testing & calibration of relay protection</figcaption>
@@ -803,7 +803,7 @@
         @push('scripts')
             <script>
                 const text =
-                    "Empowering Innovation Through Electrical Engineering Excellence. Elevate Your Career with Expert-Led Certification Classes.";
+                    "Empowering Innovation Through Electrical Engineering Excellence. Elevate Your Career with Expert-Led Classes.";
                 const typingSpeed = 30; // Adjust this value to control typing speed in milliseconds
 
                 let index = 0;
